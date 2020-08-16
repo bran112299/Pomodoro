@@ -1,20 +1,47 @@
+# Save variables to file
+# Minute second switch, 
+# Unproductive mode, Productive mode,
+    # Export that data
+#Styliziing
+#Pause instead of exit
+    #  if pause stops clock, saves number, reuses it if unpause button
+
+
 import tkinter as tk
+#from tkinter import *
+from tkinter import ttk
 import time
 
 
 class Clocker(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
-        self.text = tk.StringVar()
-        self.label = tk.Label(self, textvariable=self.text)
+        self.window()
+        
         self.mode = None
         
-        self.pomodoro(5, 4)
         
-        self.label.pack()
-        self.mainloop()
+    def window(self):
+        self.text = tk.StringVar()
+        self.label = tk.Label(self, textvariable=self.text)
         
-    
+        self.columnconfigure(3, weight=1)
+        self.label.grid(row=0, column=0, columnspan=4)
+        
+        block_label = tk.Label(self, text = "Block:").grid(row=1,column=0, sticky='w')
+        brake_label = tk.Label(self, text = "Break:").grid(row=1,column=2, sticky='e')
+        
+        self.pomostart = tk.Entry(self)
+        self.pomostart.grid(row=1,column=1, sticky='w')
+        
+        self.pomostop = tk.Entry(self)
+        self.pomostop.grid(row=1,column=3, sticky='e')
+        
+        startbut = tk.Button(self, text="Start", command= lambda: self.pomodoro(), width=15)
+        stopbut = tk.Button(self, text="Stop", command=self.destroy, width=15) 
+        startbut.grid(row=2, columnspan=2, column=0, sticky='ew')
+        stopbut.grid(row=2, columnspan=2, column=2, sticky='ew')    
+        
 
     def countdown(self, t = None):
         if t is not None:
@@ -45,10 +72,10 @@ class Clocker(tk.Tk):
             self.after(1000, self.countdown)  
                 
         
-    def pomodoro(self, start, stop):
+    def pomodoro(self):
         self.mode = "pomodoro"
-        self.start = int(start)
-        self.stop = int(stop)
+        self.start = int(self.pomostart.get())
+        self.stop = int(self.pomostop.get())
         self.brake = False
         
         #Start:
@@ -57,8 +84,7 @@ class Clocker(tk.Tk):
     def changeText(self, i):
         self.text.set(i)   
     
-    
 #ExampleApp()
 if __name__ == "__main__":
-     app = Clocker()
-     app.mainloop()
+    app = Clocker()
+    app.mainloop()
