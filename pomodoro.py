@@ -5,6 +5,7 @@
 #Styliziing
 #Pause instead of exit
     #  if pause stops clock, saves number, reuses it if unpause button
+# setting new time asks if u wanna save the data or not
 
 
 import tkinter as tk
@@ -15,12 +16,13 @@ import time
 
 class PomoApp(tk.Tk):
     def __init__(self):
-        tk.Tk.__init__(self)
-        self.tmr = timers()
+        tk.Tk.__init__(self) # This class is itself a tk class
+        self.tmr = Timers()
         self.window()
         
         
     def window(self):
+        '''Creates window with placements'''
         self.text = tk.StringVar()
         self.label = tk.Label(self, textvariable=self.text)
         
@@ -48,19 +50,32 @@ class PomoApp(tk.Tk):
     def dataextract(self):
         pass # We will reset timers after taking the variables.
 
+####################################################################################################
 
-
-class timers():
+class Timers():
+    
     def __init__(self):
-        self.reset()
-
-    def reset(self):
         self.mode = None
+        self._job = None
         print("Loaded Timers...")
-        self.t_d = 0
-        self.t_u = 0
+
+    def dataextract(self):
+        self.t_d
+        self.t_u
+    
+    
+    def cancel(self):
+        '''Cancels any current after jobs'''
+        if self._job is not None:
+            app.after_cancel(self._job)
+            self._job = None
+    
+    def pause(self): # and play?
+        pass
+            
     
     def countdown(self, t = None):
+        '''Counts down from a start number, optionality for modes'''
         if t is not None:
             self.t_d = t
             
@@ -86,17 +101,20 @@ class timers():
             timeformat = '{:02d}:{:02d}'.format(mins, secs) #02d formats an integer (d) to a field of minimum width 2 (2), with zero-padding on the left (leading 0):
             self.changeText(timeformat) #carriage to replcae
             self.t_d -= 1
-            app.after(1000, self.countdown)  
+            self._job = app.after(1000, self.countdown)  
                 
     def countup(self):
+        '''Counts up from a 0'''
         mins, secs = divmod(self.t_u, 60) #returns tuple num & denom
         timeformat = '{:02d}:{:02d}'.format(mins, secs) #02d formats an integer (d) to a field of minimum width 2 (2), with zero-padding on the left (leading 0):
         self.changeText(timeformat) #carriage to replcae
         self.t_u += 1
-        app.after(1000, self.countup)
+        self._job = app.after(1000, self.countup)
 
     
     def pomodoro(self):
+        '''Pomodoro mode'''
+        self.cancel()
         self.mode = "pomodoro"
         self.start = int(app.pomostart.get())
         self.stop = int(app.pomostop.get())
@@ -106,14 +124,16 @@ class timers():
         self.countdown(self.start)
 
     def unproductive(self):
+        '''Unproductive / Sidetracked mode'''
+        self.cancel()
         self.t_u = 0 
         self.countup()
     
     def changeText(self, i):
+        '''Text updater'''
         app.text.set(i)   
 
 #ExampleApp()
 if __name__ == "__main__":
-    
     app = PomoApp()
     app.mainloop()
