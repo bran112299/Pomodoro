@@ -86,9 +86,19 @@ export class Controller {
     this.registerIpc();
     this.applyLoginItem();
 
-    screen.on("display-added", () => this.rebuildOverlays());
-    screen.on("display-removed", () => this.rebuildOverlays());
-    screen.on("display-metrics-changed", () => this.rebuildOverlays());
+    // Rebuild lock windows only when the set of displays or their bounds really change. (On
+    // macOS, showing full-screen windows itself fires "display-metrics-changed" for work-area
+    // changes; rebuilding on that would churn the windows.)
+    let displaysSig = this.displaySignature();
+    const onDisplays = () => {
+      const sig = this.displaySignature();
+      if (sig === displaysSig) return;
+      displaysSig = sig;
+      this.rebuildOverlays();
+    };
+    screen.on("display-added", onDisplays);
+    screen.on("display-removed", onDisplays);
+    screen.on("display-metrics-changed", onDisplays);
     // Never block the OS from shutting down or logging out.
     powerMonitor.on("shutdown", () => {
       this.quitting = true;
@@ -291,6 +301,14 @@ export class Controller {
     if (!this.overlays.length) return;
     this.closeOverlays();
     if (this.lastLock?.locked && !this.essentialsMode) this.openOverlays();
+  }
+
+  private displaySignature(): string {
+    return screen
+      .getAllDisplays()
+      .map((d) => `${d.id}:${d.bounds.x},${d.bounds.y},${d.bounds.width}x${d.bounds.height}`)
+      .sort()
+      .join("|");
   }
 
   private webPrefs(): Electron.WebPreferences {

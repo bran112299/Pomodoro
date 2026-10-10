@@ -33,9 +33,10 @@ async function waitFor<T>(fn: () => Promise<T>, ok: (v: T) => boolean, ms = 1500
   return v;
 }
 
-async function lockWindow(): Promise<Page> {
+/** The primary lock window (optionally only the real, non-test one). */
+async function lockWindow(real = false): Promise<Page> {
   return waitFor(
-    async () => app.windows().find((w) => w.url().includes("lock.html")) ?? null,
+    async () => app.windows().find((w) => !w.isClosed() && w.url().includes("lock.html") && w.url().includes("primary=1") && (!real || w.url().includes("test=0"))) ?? null,
     (w) => !!w,
   ) as Promise<Page>;
 }
@@ -73,7 +74,12 @@ beforeAll(async () => {
 afterAll(async () => {
   // The app refuses to quit while locked (by design), so stop the process directly.
   app?.process().kill("SIGKILL");
-  rmSync(dataDir, { recursive: true, force: true });
+  // Windows may keep files locked for a moment after the process dies.
+  try {
+    rmSync(dataDir, { recursive: true, force: true, maxRetries: 10, retryDelay: 300 });
+  } catch {
+    /* temp dir; the OS cleans it up */
+  }
 });
 
 describe("desktop app", () => {
@@ -187,7 +193,7 @@ describe("desktop app", () => {
     const err2 = await dash.evaluate(() => window.ptu.updateSettings({ testMode: true }).then(() => "saved", (e: Error) => e.message));
     expect(err2).toMatch(/can't be turned on while locked/);
 
-    const lock = await lockWindow();
+    const lock = await lockWindow(true);
     await lock.bringToFront();
     await lock.waitForSelector("text=Emergency");
     if (shots) await lock.screenshot({ path: path.join(shots!, "desktop-lock-real.png") });
