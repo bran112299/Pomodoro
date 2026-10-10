@@ -13,3 +13,5 @@ export * from "./anki/apkg.js";
 export * from "./anki/render.js";
 export * from "./anki/study.js";
 export { decodeMessage } from "./anki/protobuf.js";
+export * from "./proofs.js";
+export * from "./client.js";

@@ -1,0 +1,13 @@
+.spacer { flex: 1; }
+.card { background: var(--panel); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; }
+.card.warn { border-left: 4px solid var(--warn); }
+.card h2 { font-size: 18px; }
+.card h3 { font-size: 15px; margin-top: 14px; }
+textarea { width: 100%; background: var(--panel-2); color: var(--text); border: 1px solid color-mix(in srgb, var(--text) 18%, transparent); border-radius: 8px; padding: 8px; font: 13px/1.4 ui-monospace, Menlo, Consolas, monospace; }
+.options { max-width: 760px; margin: 0 auto; padding: 28px 20px; }
+.popup { width: 300px; padding: 14px; }
+.lock { min-height: 100vh; display: flex; flex-direction: column; max-width: 820px; margin: 0 auto; padding: 32px 20px; gap: 16px; }
+.lock-head { display: flex; gap: 16px; align-items: center; }
+.lock-glyph { font-size: 42px; }
+.lock-foot { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: auto; border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent); padding-top: 14px; }
+.ptu-panel { background: var(--panel); border-radius: var(--radius); padding: 18px; }
