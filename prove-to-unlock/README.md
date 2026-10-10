@@ -72,6 +72,48 @@ Block everything except an allowlist of essentials: phone, messages, maps, banki
 
 One account, synced across devices: proving on your phone unlocks the Mac too.
 
+## Architecture: one app per device, linked to one account
+
+```
+         ┌───────────── iPhone app ─────────────┐
+         │ PROVER: camera, location, barometer, │
+         │ on-device AI, Health/Anki/etc. data  │
+         │ ENFORCER: Screen Time shields        │
+         │ Signs unlock tokens (Secure Enclave) │
+         └──────────────────┬───────────────────┘
+                            │ signed "unlocked until T" token
+                    ┌───────▼────────┐
+                    │  Sync service  │  relays state only
+                    │  (no photos)   │  can't forge tokens
+                    └───┬────────┬───┘
+            ┌───────────▼──┐  ┌──▼──────────────────┐
+            │  Mac app     │  │  Windows service    │
+            │  ENFORCER    │  │  ENFORCER only      │
+            │  (+ optional │  │  firewall + process │
+            │   prover)    │  │  blocker            │
+            └──────────────┘  └─────────────────────┘
+```
+
+| Piece | Role | Built with |
+|---|---|---|
+| **iPhone app** | Main prover + enforcer | Swift, SwiftUI, FamilyControls / ManagedSettings, Vision, Core Location, Core Motion |
+| **Mac app** | Enforcer (can also prove) | Swift menu-bar app; Screen Time API or Network Extension + app-launch blocker |
+| **Windows service** | Enforcer only | Background service (C# / .NET or Rust) + firewall rules + process blocker + tray app |
+| **Sync service** | Relays commitments and unlock tokens between devices | Supabase or Firebase (cross-platform). CloudKit is easier but Apple-only |
+
+### Linking devices
+
+1. Create an account in the iPhone app.
+2. On the Mac or PC, install the app → it shows a **QR code** → scan it with the phone. The devices are now paired and share keys.
+3. Every device sees the same commitments and unlock state.
+
+### Unlock tokens (why a PC can't fake an unlock)
+
+- When proof passes, the phone issues a token saying "unlocked until 23:59 today," **signed with a key that never leaves the phone** (Secure Enclave).
+- Each enforcer checks the signature with the phone's public key, which it got at pairing. The sync server only passes tokens along; it **can't create or change** them.
+- Tokens expire, so devices lock again on their own at the next commitment window.
+- **Offline:** an enforcer keeps the last valid token. The dead-man switch (below) still applies, so a device never stays bricked.
+
 ## Failsafe (required)
 
 Being locked out of something important is worse than skipping the gym.
