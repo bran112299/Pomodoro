@@ -92,9 +92,27 @@ jobs:
             prove-to-unlock/apps/desktop/release/*.AppImage
           if-no-files-found: error
 
+  ios:
+    name: iOS (Swift core + app)
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: prove-to-unlock/package-lock.json
+      - run: npm ci
+      - name: ProveCore tests (against the TypeScript vectors)
+        working-directory: prove-to-unlock/apps/ios/ProveCore
+        run: SWIFT_VECTORS_OUT="$RUNNER_TEMP/swift-vectors.json" swift test
+      - name: Verify Swift-signed records with the TypeScript implementation
+        run: npx tsx scripts/verify-swift-vectors.ts "$RUNNER_TEMP/swift-vectors.json"
+
   release:
     name: Publish "latest build" pre-release
-    needs: [test, desktop]
+    needs: [test, desktop, ios]
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
