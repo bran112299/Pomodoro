@@ -7,7 +7,7 @@ import XCTest
 final class VectorTests: XCTestCase {
     static let root: URL = {
         var u = URL(fileURLWithPath: #filePath)
-        for _ in 0..<5 { u.deleteLastPathComponent() }
+        for _ in 0..<6 { u.deleteLastPathComponent() }
         return u // prove-to-unlock/
     }()
 
@@ -294,5 +294,31 @@ final class VectorTests: XCTestCase {
         let ro = Ledger(readOnly: try JSONCoding.decoder().decode(LedgerData.self, from: data))
         XCTAssertEqual(ro.records().count, ledger.records().count)
         XCTAssertFalse(Engine.evaluate(config: ro.config(), records: ro.records(), now: now, time: lt).locked)
+    }
+
+    func testShieldPlanForTheScreenTimeExtension() throws {
+        let id = Identity(key: SoftwareKey())
+        let ledger = try Ledger(identity: id)
+        let lt = LocalTime(identifier: "America/New_York")!
+        let at = { (h: Int, day: String) in lt.epoch(day: day, minutesOfDay: h * 60)! }
+        try ledger.updateConfig(now: at(1, "2026-10-12")) { c in
+            c.commitments = [Commitment(id: "f", title: "Focus", days: [1, 2, 3, 4, 5], window: TimeWindow(start: "08:00", end: "20:00"), requirements: [.focus(FocusRequirement(sessions: 1))], createdAt: 0)]
+            c.excused = [ExcusedDay(day: "2026-10-13", createdAt: at(1, "2026-10-12"))]
+        }
+        var plan = ShieldPlan.make(config: ledger.config(), records: ledger.records(), now: at(9, "2026-10-12"), time: lt, testMode: false)
+        XCTAssertTrue(plan.shouldShield(now: at(9, "2026-10-12")))
+        XCTAssertFalse(plan.shouldShield(now: at(7, "2026-10-12")))   // before the window
+        XCTAssertFalse(plan.shouldShield(now: at(21, "2026-10-12")))  // after: the lock always lifts
+        XCTAssertFalse(plan.shouldShield(now: at(9, "2026-10-13")))   // excused in advance
+        XCTAssertFalse(plan.shouldShield(now: at(9, "2026-10-11")))   // Sunday: not a lock day
+        XCTAssertFalse(plan.shouldShield(now: at(9, "2026-10-20")))   // stale plan fails open
+        _ = try Proofs.issueFocusProof(ledger: ledger, commitmentId: "f", minutes: 25, now: at(10, "2026-10-12"), time: lt)
+        plan = ShieldPlan.make(config: ledger.config(), records: ledger.records(), now: at(10, "2026-10-12"), time: lt, testMode: false)
+        XCTAssertFalse(plan.shouldShield(now: at(11, "2026-10-12")))
+        XCTAssertTrue(plan.shouldShield(now: at(9, "2026-10-14")))
+        let test = ShieldPlan.make(config: ledger.config(), records: ledger.records(), now: at(10, "2026-10-12"), time: lt, testMode: true)
+        XCTAssertFalse(test.shouldShield(now: at(9, "2026-10-14")))
+        let roundTrip = try JSONCoding.decoder().decode(ShieldPlan.self, from: JSONCoding.encoder().encode(plan))
+        XCTAssertEqual(roundTrip, plan)
     }
 }
