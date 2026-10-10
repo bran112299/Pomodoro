@@ -109,6 +109,34 @@ jobs:
         run: SWIFT_VECTORS_OUT="$RUNNER_TEMP/swift-vectors.json" swift test
       - name: Verify Swift-signed records with the TypeScript implementation
         run: npx tsx scripts/verify-swift-vectors.ts "$RUNNER_TEMP/swift-vectors.json"
+      - name: Generate the Xcode project
+        working-directory: prove-to-unlock/apps/ios
+        run: |
+          brew install xcodegen
+          xcodegen generate
+      - name: Build for the iOS Simulator
+        working-directory: prove-to-unlock/apps/ios
+        run: |
+          set -o pipefail
+          xcodebuild -project ProveToUnlock.xcodeproj -scheme ProveToUnlock -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath build/sim \
+            CODE_SIGNING_ALLOWED=NO build | tail -n 200
+      - name: Build for devices (unsigned .ipa)
+        working-directory: prove-to-unlock/apps/ios
+        run: |
+          set -o pipefail
+          xcodebuild -project ProveToUnlock.xcodeproj -scheme ProveToUnlock -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath build/device \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build | tail -n 80
+          mkdir -p dist/Payload
+          cp -R build/device/Build/Products/Release-iphoneos/ProveToUnlock.app dist/Payload/
+          (cd dist && zip -qry ProveToUnlock-unsigned.ipa Payload)
+          ls -la dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ios
+          path: prove-to-unlock/apps/ios/dist/*.ipa
+          if-no-files-found: error
 
   release:
     name: Publish "latest build" pre-release

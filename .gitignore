@@ -10,3 +10,8 @@ prove-to-unlock/apps/ios/build/
 prove-to-unlock/apps/ios/ProveCore/.build/
 prove-to-unlock/apps/desktop/assets/models/
 .venv/
+prove-to-unlock/apps/ios/dist/
+prove-to-unlock/apps/ios/ProveToUnlock/Info.plist
+prove-to-unlock/apps/ios/ProveToUnlock/ProveToUnlock.entitlements
+prove-to-unlock/apps/ios/ScreenTimeMonitor/Info.plist
+prove-to-unlock/apps/ios/ScreenTimeMonitor/ScreenTimeMonitor.entitlements
