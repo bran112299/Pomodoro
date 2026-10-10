@@ -53,6 +53,7 @@ export class Controller {
   private quitting = false;
   private quitAttempts = new Map<number, number>();
   private warnedTestBlock = new Map<string, number>();
+  private unlockedAt: number | null = null;
 
   constructor(
     private storage: Storage,
@@ -146,11 +147,16 @@ export class Controller {
     this.lastLock = lock;
 
     if (!lock.locked) {
-      if (this.overlays.length) this.closeOverlays();
+      // Show "Unlocked" on the lock screen for a moment so the user sees their proof worked.
+      if (this.overlays.length) {
+        this.unlockedAt ??= Date.now();
+        if (Date.now() - this.unlockedAt >= 2500) this.closeOverlays();
+      }
       this.essentialsMode = false;
       this.blockedApp = undefined;
       if (wasLocked) this.addLog("unlocked");
     } else {
+      this.unlockedAt = null;
       if (!wasLocked) this.addLog("locked: prove your commitment to unlock");
       this.enforce();
     }

@@ -1,5 +1,5 @@
 import { render } from "preact";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { EscHold, Status } from "@ptu/ui";
 import "@ptu/ui/ui.css";
 import "./app.css";
@@ -18,6 +18,13 @@ function Lock() {
   const state = useUiState();
   const [target, setTarget] = useState<ProveTarget | null>(null);
   const [msg, run] = useAction();
+  // Once the task being shown is done (or gone), go back to the overview.
+  // (Photo results stay up until "Done" so you can see why a photo was or wasn't accepted.)
+  const targetReq = target && state ? state.lock.commitments.find((c) => c.commitment.id === target.commitmentId)?.requirements[target.requirementIndex] : undefined;
+  const targetDone = !!target && !!state && (!targetReq || targetReq.ok);
+  useEffect(() => {
+    if (targetDone && target?.kind !== "photo") setTarget(null);
+  }, [targetDone]);
   if (!state) return null;
 
   if (!primary) {

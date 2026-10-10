@@ -40,7 +40,7 @@ async function lockWindow(): Promise<Page> {
   ) as Promise<Page>;
 }
 
-function commitment(id: string, title: string): Commitment {
+function commitment(id: string, title: string, requirements: Commitment["requirements"] = [{ kind: "focus", sessions: 1, minutesPerSession: 25 }]): Commitment {
   const d = new Date();
   const start = Math.max(0, d.getHours() - 1);
   return {
@@ -49,7 +49,7 @@ function commitment(id: string, title: string): Commitment {
     enabled: true,
     days: [0, 1, 2, 3, 4, 5, 6],
     window: { start: `${String(start).padStart(2, "0")}:00`, end: "24:00" },
-    requirements: [{ kind: "focus", sessions: 1, minutesPerSession: 25 }],
+    requirements,
     require: "all",
     createdAt: Date.now(),
   };
@@ -59,7 +59,7 @@ beforeAll(async () => {
   dataDir = mkdtempSync(path.join(os.tmpdir(), "ptu-e2e-"));
   app = await electron.launch({
     executablePath: require("electron") as unknown as string,
-    args: [path.join(here, "..", "dist", "main", "main.cjs"), "--no-sandbox"],
+    args: [path.join(here, "..", "dist", "main", "main.cjs"), "--no-sandbox", "--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"],
     env: { ...process.env, PTU_USER_DATA: dataDir, ELECTRON_ENABLE_LOGGING: "1" },
   });
   dash = await app.firstWindow();
@@ -123,9 +123,54 @@ describe("desktop app", () => {
     await waitFor(async () => app.windows().some((w) => w.url().includes("lock.html")), (open) => !open);
   });
 
+  it("imports a real Anki deck and unlocks after honest reviews in the lock screen", async () => {
+    const fixture = path.join(here, "..", "..", "..", "packages", "core", "test", "fixtures", "modern.apkg");
+    await app.evaluate(({ dialog }, file) => {
+      dialog.showOpenDialog = (async () => ({ canceled: false, filePaths: [file] })) as never;
+    }, fixture);
+    const imported = await dash.evaluate(() => window.ptu.importDeck());
+    expect(imported.imported.map((d) => d.name).sort()).toEqual(["Geography", "Spanish::Verbs"]);
+
+    const cfg = (await state()).config;
+    await dash.evaluate((c) => window.ptu.updateConfig(c), { ...cfg, commitments: [...cfg.commitments, commitment("cards", "Cards first", [{ kind: "anki", mode: "count", count: 2 }])] });
+    await waitFor(state, (s) => s.lock.locked);
+    const lock = await lockWindow();
+    await lock.click("text=Do it here");
+    await lock.waitForSelector("text=Show answer");
+    if (shots) await lock.screenshot({ path: path.join(shots!, "desktop-anki-review.png") });
+    for (let i = 0; i < 2; i++) {
+      await lock.keyboard.press("Space");
+      await lock.waitForSelector("text=Good");
+      await new Promise((r) => setTimeout(r, 1400)); // honest: actually read the answer
+      await lock.keyboard.press("3");
+      await new Promise((r) => setTimeout(r, 300));
+    }
+    const s = await waitFor(state, (x) => !x.lock.locked);
+    expect(s.lock.commitments.find((c) => c.commitment.id === "cards")!.unlockedBy).toBe("proven");
+  });
+
+  it("accepts a live webcam photo checked on-device (MobileNet + dHash)", async () => {
+    const cfg = (await state()).config;
+    await dash.evaluate((c) => window.ptu.updateConfig(c), { ...cfg, commitments: [...cfg.commitments, commitment("photo", "Photo proof", [{ kind: "photo", repeatMaxHamming: 8 }])] });
+    await waitFor(state, (s) => s.lock.locked);
+    const lock = await lockWindow();
+    await lock.click("text=Do it here");
+    await lock.waitForSelector("button:has-text('Take photo'):not([disabled])", { timeout: 20000 });
+    await lock.click("text=Take photo");
+    await lock.waitForSelector("text=/Photo (not )?accepted/", { timeout: 60000 }).catch(async (e) => {
+      if (shots) await lock.screenshot({ path: path.join(shots!, "debug-photo.png") });
+      throw new Error(`${(e as Error).message}\npage: ${(await lock.innerText("body")).slice(0, 600)}`);
+    });
+    const text = await lock.innerText("body");
+    expect(text, text).toContain("Photo accepted");
+    if (shots) await lock.screenshot({ path: path.join(shots!, "desktop-photo-accepted.png") });
+    const s = await waitFor(state, (x) => !x.lock.locked);
+    expect(s.lock.commitments.find((c) => c.commitment.id === "photo")!.unlockedBy).toBe("proven");
+  });
+
   it("won't let you edit a locked commitment, but holding Esc for 3 s always unlocks", async () => {
     const before = (await state()).config;
-    await dash.evaluate((c) => window.ptu.updateConfig(c), { ...before, commitments: [...before.commitments, commitment("anki", "Study first")] });
+    await dash.evaluate((c) => window.ptu.updateConfig(c), { ...before, commitments: [...before.commitments, commitment("esc", "Esc test")] });
     await waitFor(state, (s) => s.lock.locked);
 
     // In test mode editing is allowed; turn test mode off to check the real rules.
@@ -133,7 +178,7 @@ describe("desktop app", () => {
     const cfg = (await state()).config;
     const err = await dash.evaluate((c) => window.ptu.updateConfig(c).then(() => "saved", (e: Error) => e.message), {
       ...cfg,
-      commitments: cfg.commitments.filter((c) => c.id !== "anki"),
+      commitments: cfg.commitments.filter((c) => c.id !== "esc"),
     });
     expect(err).toMatch(/locked right now/);
     const err2 = await dash.evaluate(() => window.ptu.updateSettings({ testMode: true }).then(() => "saved", (e: Error) => e.message));

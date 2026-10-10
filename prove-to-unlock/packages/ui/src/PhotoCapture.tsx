@@ -13,6 +13,7 @@ export function PhotoCapture(props: { challenge?: string; onCapture: (p: Capture
   const video = useRef<HTMLVideoElement>(null);
   const [error, setError] = useState("");
   const [ready, setReady] = useState(false);
+  const [hint, setHint] = useState("");
 
   useEffect(() => {
     let stream: MediaStream | null = null;
@@ -25,10 +26,16 @@ export function PhotoCapture(props: { challenge?: string; onCapture: (p: Capture
           return;
         }
         stream = s;
-        if (video.current) {
-          video.current.srcObject = s;
-          void video.current.play();
-          setReady(true);
+        const v = video.current;
+        if (v) {
+          // Enable capture only once real frames arrive (videoWidth is 0 before that).
+          const onFrame = () => {
+            if (v.videoWidth > 0) setReady(true);
+          };
+          v.addEventListener("loadeddata", onFrame);
+          v.addEventListener("playing", onFrame);
+          v.srcObject = s;
+          void v.play().catch((e: Error) => setError(`Camera couldn't start (${e.message}).`));
         }
       })
       .catch((e: Error) => setError(e.name === "NotAllowedError" ? "Camera permission was denied." : `No camera available (${e.message}).`));
@@ -40,7 +47,10 @@ export function PhotoCapture(props: { challenge?: string; onCapture: (p: Capture
 
   const capture = () => {
     const v = video.current;
-    if (!v || !v.videoWidth) return;
+    if (!v || !v.videoWidth) {
+      setHint("The camera isn't ready yet; try again in a moment.");
+      return;
+    }
     const c = document.createElement("canvas");
     c.width = v.videoWidth;
     c.height = v.videoHeight;
@@ -53,6 +63,7 @@ export function PhotoCapture(props: { challenge?: string; onCapture: (p: Capture
     <div class="ptu-camera">
       {props.challenge && <div class="ptu-challenge">Challenge: {props.challenge}</div>}
       {error ? <div class="ptu-fail">{error}</div> : <video ref={video} playsInline muted />}
+      {hint && <div class="ptu-note">{hint}</div>}
       <div class="ptu-row">
         <button class="ptu-btn primary" disabled={!ready} onClick={capture}>
           Take photo
