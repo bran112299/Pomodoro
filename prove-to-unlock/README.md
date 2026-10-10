@@ -64,6 +64,27 @@ Being locked out of something important is worse than skipping the gym.
 - **Excused days:** a sick or rest day is set *in advance*, not in the moment.
 - **Dead-man switch:** if the app crashes or the server can't be reached for N hours, the device unlocks. The app must never brick a device.
 
+## When you're not near the task area
+
+You mark two things for each task:
+
+- **Task area:** the exact place where proof is taken, like the gym's geofence.
+- **Reachable region:** the wider area from which you could realistically get there, like your city within about 30 km.
+
+| Where you are | What happens |
+|---|---|
+| **Inside the reachable region** | **Locked until you go.** "I'm home" isn't an excuse, because the gym is reachable. |
+| **Outside the reachable region (traveling)** | **A substitute task, not a free pass.** Examples: a workout logged in Apple Health, or proof at any gym with stricter checks (new-location photo plus the random challenge). |
+| **Can't do any version (sick, injured)** | A **pre-declared excused day.** These are limited per month and set in advance, not in the moment. |
+
+**Why not just let you off the hook when you're away?** Because then "away" becomes the cheat: drive 31 km and you're free. So travel status needs to be:
+
+- **Sustained:** outside the region for most of the commitment window, or overnight, not a quick trip past the line.
+- **Ideally declared ahead:** "I'm in Chicago Thu–Sun" can be checked against location history.
+- **Capped:** a set number of travel days per month before it counts as an excused day.
+
+The rule stays the same everywhere: **the honest path is always easier than the cheat.**
+
 ## Other proof types (same engine)
 
 - **Anki:** unlock when today's due reviews are done (checked via AnkiConnect on desktop). You have to actually answer honestly for this to be worth anything.
@@ -77,6 +98,7 @@ Being locked out of something important is worse than skipping the gym.
 rule {
   commitment: "Go to the gym today"
   evidence:   photo { live_capture, geofence: gym, window: today, unique_vs_history }
+  region:     { reachable: home_city_30km, away_policy: substitute(healthkit_workout | any_gym_strict) }
   unlocks:    device_full_access
   until:      next_commitment_window
   failsafe:   { allowlist, emergency_cost: "10 min delay + streak reset" }
