@@ -27,7 +27,8 @@ export function parseLsappinfoFront(out: string): string | null {
 
 /** Parse `lsappinfo info <ASN>` output. */
 export function parseLsappinfoInfo(out: string): ForegroundApp | null {
-  const name = /^\s*"([^"]+)"\s+ASN:/m.exec(out)?.[1];
+  // `lsappinfo info` prints `"Safari" ASN:...`; `lsappinfo list` prefixes an index (` 23) "Safari"`).
+  const name = /^\s*(?:\d+\)\s*)?"([^"]+)"\s+ASN:/m.exec(out)?.[1];
   const bundle = /bundleID="([^"]*)"/.exec(out)?.[1];
   const pid = Number(/\bpid\s*=\s*(\d+)/.exec(out)?.[1]);
   if (!name || !Number.isFinite(pid)) return null;
