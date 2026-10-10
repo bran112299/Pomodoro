@@ -110,6 +110,25 @@ The rule stays the same everywhere: **the honest path is always easier than the 
 - **Steps or workouts:** Apple Health / HealthKit data.
 - **Reading or writing:** a short summary of what you read, or a word count.
 
+## Similar apps and what's different here
+
+Researched October 2026. The basic idea, earning screen time with proof, already exists:
+
+- **Habit Doom:** habits unlock blocked apps; live photo checked on-device by AI. iOS and Android.
+- **GymLock / Lock In:** gym location tied to app blocking.
+- **ProveIt / Accountable AI:** live photo proof checked by AI, no gallery uploads.
+- **Time Out, RepKey, Replock:** unlock by steps or reps.
+
+None of them combine:
+
+1. **The whole device locked** down to essentials, **across Mac and iPhone**, unlocked by proof on either device.
+2. **Repeat detection against all your past proof photos** (perceptual hash), not just "live and from today."
+3. **Floor-level checks** (barometer descent, my-gym image match, beacon) for tasks in the same building.
+4. **Two-circle location policy:** locked while the place is reachable, a substitute task when you're properly away.
+5. **One engine for any proof:** gym, Anki, Pomodoro and others as plug-in rules.
+
+**Strictness is what sets this apart:** cheating should be harder than doing the task.
+
 ## Core model
 
 ```
