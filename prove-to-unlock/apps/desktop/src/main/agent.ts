@@ -21,6 +21,7 @@ import {
   type SyncResponse,
   type TrustResponse,
   authHeader,
+  deviceIdFromPublicKey,
   encodePairingQr,
   fingerprint,
   isDeviceHello,
@@ -297,6 +298,9 @@ export class Agent {
         }
         if (!this.pairing) throw new HttpError(403, "this device isn't showing a pairing code");
         if (!isDeviceHello(parsed.device)) throw new HttpError(400, "invalid device");
+        if ((await deviceIdFromPublicKey(parsed.device.publicKey).catch(() => "")) !== parsed.device.deviceId) {
+          throw new HttpError(400, "device id doesn't match its key");
+        }
         const result = this.pairing.consume(String(parsed.code ?? ""));
         if (result !== "ok") {
           if (result === "locked" || result === "expired") this.pairing = null;
