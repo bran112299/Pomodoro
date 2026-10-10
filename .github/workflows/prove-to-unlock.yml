@@ -59,9 +59,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { os: macos-latest, name: macOS, flags: --mac }
-          - { os: windows-latest, name: Windows, flags: --win }
-          - { os: ubuntu-latest, name: Linux, flags: --linux }
+          - { os: macos-latest, name: macOS, flags: --mac, run: "" }
+          - { os: windows-latest, name: Windows, flags: --win, run: "" }
+          - { os: ubuntu-latest, name: Linux, flags: --linux, run: "xvfb-run -a -s '-screen 0 1440x900x24'" }
     runs-on: ${{ matrix.os }}
     timeout-minutes: 40
     steps:
@@ -77,11 +77,17 @@ jobs:
       - name: Package
         working-directory: prove-to-unlock/apps/desktop
         run: npx electron-builder ${{ matrix.flags }} --publish never
-      - name: End-to-end against the packaged Linux app
-        if: matrix.name == 'Linux'
+      - name: End-to-end against the packaged app (${{ matrix.name }})
+        shell: bash
         run: |
-          npx playwright install --with-deps chromium
-          PTU_E2E_EXECUTABLE="$PWD/apps/desktop/release/linux-unpacked/prove-to-unlock" xvfb-run -a -s "-screen 0 1440x900x24" npx vitest run --config vitest.e2e.config.ts apps/desktop
+          case "${{ matrix.name }}" in
+            macOS)   EXE=$(ls -d "$PWD"/apps/desktop/release/mac-universal/*.app/Contents/MacOS/* | head -1) ;;
+            Windows) EXE=$(cygpath -w "$(ls -d "$PWD"/apps/desktop/release/win-unpacked/*.exe | grep -vi uninstall | head -1)") ;;
+            Linux)   EXE="$PWD/apps/desktop/release/linux-unpacked/prove-to-unlock"
+                     sudo apt-get update -qq && sudo apt-get install -y -qq xvfb >/dev/null ;;
+          esac
+          echo "Testing packaged app: $EXE"
+          PTU_E2E_EXECUTABLE="$EXE" ${{ matrix.run }} npx vitest run --config vitest.e2e.config.ts apps/desktop
       - uses: actions/upload-artifact@v4
         with:
           name: desktop-${{ matrix.name }}
@@ -120,14 +126,14 @@ jobs:
           set -o pipefail
           xcodebuild -project ProveToUnlock.xcodeproj -scheme ProveToUnlock -configuration Debug \
             -destination 'generic/platform=iOS Simulator' -derivedDataPath build/sim \
-            CODE_SIGNING_ALLOWED=NO build | tail -n 200
+            CODE_SIGNING_ALLOWED=NO -quiet build
       - name: Build for devices (unsigned .ipa)
         working-directory: prove-to-unlock/apps/ios
         run: |
           set -o pipefail
           xcodebuild -project ProveToUnlock.xcodeproj -scheme ProveToUnlock -configuration Release \
             -destination 'generic/platform=iOS' -derivedDataPath build/device \
-            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build | tail -n 80
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" -quiet build
           mkdir -p dist/Payload
           cp -R build/device/Build/Products/Release-iphoneos/ProveToUnlock.app dist/Payload/
           (cd dist && zip -qry ProveToUnlock-unsigned.ipa Payload)

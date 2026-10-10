@@ -30,7 +30,11 @@ final class AppModel: ObservableObject {
     var fingerprint: String { identity?.fingerprint ?? "" }
     var deviceId: String { identity?.deviceId ?? "" }
 
+    private var started = false
+
     func start() {
+        guard !started else { return }
+        started = true
         do {
             identity = Identity(key: try KeyStore.loadOrCreate())
             let saved = Storage.read(LedgerData.self, from: Storage.ledgerURL)

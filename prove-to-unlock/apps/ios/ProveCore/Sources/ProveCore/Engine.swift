@@ -34,6 +34,13 @@ public struct LockState: Equatable {
     public var commitments: [CommitmentStatus]
     public var emergencyUntil: Millis?
     public var nextChangeAt: Millis?
+
+    public init(locked: Bool, commitments: [CommitmentStatus], emergencyUntil: Millis?, nextChangeAt: Millis?) {
+        self.locked = locked
+        self.commitments = commitments
+        self.emergencyUntil = emergencyUntil
+        self.nextChangeAt = nextChangeAt
+    }
 }
 
 public struct ProofRef {

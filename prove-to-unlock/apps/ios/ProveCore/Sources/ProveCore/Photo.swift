@@ -87,6 +87,10 @@ public enum PhotoCheck {
     public struct Result: Equatable {
         public var ok: Bool
         public var failures: [String]
+        public init(ok: Bool, failures: [String]) {
+            self.ok = ok
+            self.failures = failures
+        }
     }
 
     static func isoDay(_ ms: Millis) -> String {

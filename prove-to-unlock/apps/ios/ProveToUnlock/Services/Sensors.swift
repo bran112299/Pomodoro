@@ -10,7 +10,8 @@ final class LocationService: NSObject, ObservableObject, CLLocationManagerDelega
     private let manager = CLLocationManager()
     private var fixContinuations: [CheckedContinuation<CLLocation?, Never>] = []
     private var monitor: CLMonitor?
-    private var monitorTask: Task<Void, Never>?
+    private var monitorCreation: Task<CLMonitor, Never>?
+    private var eventsTask: Task<Void, Never>?
 
     @Published var authorization: CLAuthorizationStatus = .notDetermined
     @Published var last: CLLocation?
@@ -87,24 +88,37 @@ final class LocationService: NSObject, ObservableObject, CLLocationManagerDelega
 
     // MARK: geofences
 
-    /// Monitor these places (Life360-style circles). iOS allows ~20 per app.
-    func monitor(places: [Place]) {
-        monitorTask?.cancel()
-        let wanted = Array(places.prefix(20))
-        monitorTask = Task { @MainActor in
+    /// The one CLMonitor for this app (iOS forbids two live monitors with the same name), created
+    /// once; its event stream is consumed for the app's lifetime.
+    private func sharedMonitor() async -> CLMonitor {
+        if let t = monitorCreation { return await t.value }
+        let t = Task { @MainActor () -> CLMonitor in
             let m = await CLMonitor("ptu-places")
             self.monitor = m
+            self.eventsTask = Task { @MainActor in
+                do {
+                    for try await event in await m.events {
+                        let t = Millis(event.date.timeIntervalSince1970 * 1000)
+                        self.handle(id: event.identifier, satisfied: event.state == .satisfied, at: t)
+                    }
+                } catch {}
+            }
+            return m
+        }
+        monitorCreation = t
+        return await t.value
+    }
+
+    /// Monitor these places (Life360-style circles). iOS allows ~20 per app.
+    func monitor(places: [Place]) {
+        let wanted = Array(places.prefix(20))
+        Task { @MainActor in
+            let m = await self.sharedMonitor()
             for id in await m.identifiers where !wanted.contains(where: { $0.id == id }) { await m.remove(id) }
             for p in wanted {
                 let cond = CLMonitor.CircularGeographicCondition(center: CLLocationCoordinate2D(latitude: p.lat, longitude: p.lon), radius: min(p.radiusM, 50_000))
                 await m.add(cond, identifier: p.id, assuming: .unsatisfied)
             }
-            do {
-                for try await event in await m.events {
-                    let t = Millis(event.date.timeIntervalSince1970 * 1000)
-                    self.handle(id: event.identifier, satisfied: event.state == .satisfied, at: t)
-                }
-            } catch {}
         }
     }
 

@@ -1,240 +1,150 @@
-# prove-to-unlock
+# Prove to Unlock
 
 > **Prove with X you can do Y before unlocking Z.**
 
-Your Mac, PC or iPhone stays locked down to the essentials until you've done what you said you'd do today and proved it.
+Your phone, computer and browser stay locked to the essentials until you've done what you
+committed to today, like going to the gym, clearing your Anki cards or doing deep work, and
+proved it. The original idea is in [docs/VISION.md](docs/VISION.md).
 
-> "Go to the gym today." → take a fresh photo at the gym → everything unlocks.
-
-**This isn't a fitness app.** The gym is just the first example. It's a general **commitment engine**: any task you can prove can be what unlocks your device, whether that's studying, work, chores, appointments, health or habits.
-
-Nothing is locked forever. You get access by showing evidence that you did something, not by asking for it.
-
-## The pattern
-
-| Slot | Role | Gym example | Anki example |
-|---|---|---|---|
-| **X** | The evidence | A new photo taken at the gym today | Today's due reviews finished |
-| **Y** | What it proves | You actually went | You actually studied |
-| **Z** | What it unlocks | Your full device | Your full device |
-
-**Z depends on proof, not on promises.**
-
-## How a day works
-
-1. **Commit.** In the morning, say what today's task is: "Go to the gym today." The device locks to essentials only.
-2. **Do it.** Go to the gym.
-3. **Prove it.** Take a photo *inside the app* while you're there.
-4. **Verify.** The app checks that the photo is new, real and from today (see below).
-5. **Unlock.** Everything opens until the next commitment window.
-
-## Verifying a photo (the anti-repeat check)
-
-Layered checks. Each one makes cheating more work than just going.
-
-| Check | What it catches |
-|---|---|
-| **Taken in the app, live camera only, no camera roll** | Old photos, downloaded photos. This matters most: EXIF is easy to edit, but a photo the app captured itself never passes through a file you could edit. |
-| **Timestamp is today, within the commitment window** | Yesterday's photo |
-| **GPS is inside the gym's geofence** (location set once at setup) | A photo taken at home |
-| **Perceptual hash (pHash/dHash) compared with every past proof photo; a small Hamming distance means a repeat** | The same shot taken again, or a photo of a photo |
-| **Image analysis: does it look like a gym? Is it a screen or a printout?** | A picture of a monitor showing an old photo |
-| **Optional random challenge: "hold up 3 fingers," "include something blue"** | Pre-staged photos. A prompt you couldn't predict means the photo must be live. |
-
-### On-device AI (photos never leave the device)
-
-All image checks run on the device. That's private, works offline and costs nothing per check.
-
-| Check | Apple (iOS + macOS), built in |
-|---|---|
-| "What's in this photo?" labels (gym, dumbbell, bed, book…) | Vision `VNClassifyImageRequest`, a built-in classifier with over 1,000 labels |
-| "Is this *my* gym?" + "is this a repeat?" | Vision `VNGenerateImageFeaturePrintRequest`: compare feature-print distances with the reference photos (should be close) and past proofs (shouldn't be nearly identical) |
-| Task-specific checks (made bed, a photo of a screen) | A custom Core ML model trained with Create ML |
-| Written recaps | Apple's on-device Foundation Models framework (on supported devices) |
-
-The same Vision APIs exist on macOS, so the Mac gets them for free.
-
-**Windows: it doesn't need to verify anything.** Proof happens on the phone, and Windows only *enforces* the lock and listens for a synced "unlocked" signal. If Windows-side checks are needed later, run an open model (e.g. CLIP or MobileNet as ONNX) through ONNX Runtime / Windows ML, using the NPU on Copilot+ PCs.
-
-### Threat model: honest by design
-
-This isn't meant to stop a determined attacker. It's meant to make **doing the task easier than faking it**. Someone who spoofs GPS and forges a live capture to skip the gym is only cheating themselves. The goal is enough friction that the honest path is always the lazy one.
-
-## The lockdown
-
-Block everything except an allowlist of essentials: phone, messages, maps, banking, the authenticator app, and the prove-to-unlock app itself.
-
-| Platform | How | Notes |
+| Piece | What it is | Download (from the **ptu-latest** pre-release) |
 |---|---|---|
-| **iPhone / iPad** | Apple Screen Time API (`FamilyControls` + `ManagedSettings` shields + `DeviceActivity` schedules) | The supported, proven route; apps like Opal and one sec use it. Needs the Family Controls entitlement from Apple. Emergency calls/SOS can never be blocked, which is a built-in failsafe. |
-| **Mac** | Screen Time API where available, otherwise a Network Extension content filter plus an app-launch blocker | Harder to make tamper-resistant against an admin user, so tie it to a separate admin account or a delay before settings can change. |
-| **Windows PC** | Background service plus firewall/hosts rules plus a process blocker | The most bypassable. Fine for the "honest by design" goal. |
+| **Desktop app** | Lock screen on every display, essentials-only mode, Esc failsafe, Anki, focus, webcam photo proof, device linker | macOS `.dmg`/`.zip` · Windows installer `.exe` or portable `.exe` · Linux `.AppImage` |
+| **Browser extension** | Blocks non-essential sites while locked; Anki + focus on the lock page | `prove-to-unlock-chrome-*.zip` · `prove-to-unlock-firefox-*.zip` |
+| **iPhone app** | Screen Time lock, live photo proof (on-device AI), place geofences, barometer floors, Anki, QR linking | `ProveToUnlock-unsigned.ipa` (sideload, see below) |
 
-One account, synced across devices: proving on your phone unlocks the Mac too.
+Everything is built and tested in GitHub Actions on every push
+(`.github/workflows/prove-to-unlock.yml`). The latest build is attached to the
+**ptu-latest** pre-release on the repository's Releases page.
 
-## Architecture: one app per device, linked to one account
+## How it works
 
-```
-         ┌───────────── iPhone app ─────────────┐
-         │ PROVER: camera, location, barometer, │
-         │ on-device AI, Health/Anki/etc. data  │
-         │ ENFORCER: Screen Time shields        │
-         │ Signs unlock tokens (Secure Enclave) │
-         └──────────────────┬───────────────────┘
-                            │ signed "unlocked until T" token
-                    ┌───────▼────────┐
-                    │  Sync service  │  relays state only
-                    │  (no photos)   │  can't forge tokens
-                    └───┬────────┬───┘
-            ┌───────────▼──┐  ┌──▼──────────────────┐
-            │  Mac app     │  │  Windows service    │
-            │  ENFORCER    │  │  ENFORCER only      │
-            │  (+ optional │  │  firewall + process │
-            │   prover)    │  │  blocker            │
-            └──────────────┘  └─────────────────────┘
-```
+1. **Commit.** Create a commitment: which days, the lock window (e.g. 06:00 until midnight), and
+   what unlocks it: *all* or *any N* of these:
+   - 📸 **Photo**: a live photo (no camera roll) that's new (perceptual-hash compared with every
+     earlier proof photo), optionally at a place, showing certain things (on-device AI labels),
+     looking like your reference photos of the place, with a random challenge ("hold up 3
+     fingers").
+   - 📍 **Presence**: time spent inside a place (map pin + radius).
+   - 🏢 **Floors**: barometer descent or ascent, for "the gym is downstairs".
+   - 🗂️ **Anki**: clear today's cards or do N *honest* reviews (FSRS-5 scheduling, real `.apkg`
+     import).
+   - ⏱️ **Focus**: N Pomodoro sessions.
+2. **Locked.** Inside the window, non-essential apps and sites are covered or blocked on every
+   linked device.
+3. **Prove it** on whichever device can: photo, location and floors on the phone; Anki and focus
+   anywhere; photos also by webcam.
+4. **Unlocked everywhere.** The proof is signed and synced over your Wi-Fi; every device verifies
+   it and unlocks.
 
-| Piece | Role | Built with |
-|---|---|---|
-| **iPhone app** | Main prover + enforcer | Swift, SwiftUI, FamilyControls / ManagedSettings, Vision, Core Location, Core Motion |
-| **Mac app** | Enforcer (can also prove) | Swift menu-bar app; Screen Time API or Network Extension + app-launch blocker |
-| **Windows service** | Enforcer only | Background service (C# / .NET or Rust) + firewall rules + process blocker + tray app |
-| **Sync service** | Relays commitments and unlock tokens between devices | Supabase or Firebase (cross-platform). CloudKit is easier but Apple-only |
+**Away from your area?** Mark a big "reachable region" (your city). If the phone sees you
+outside it for most of the day, a substitute task applies instead (capped per month). Driving just
+past the line doesn't count.
 
-### Linking devices
+**Failsafes** (by design, you can never be stuck):
 
-1. Create an account in the iPhone app.
-2. On the Mac or PC, install the app → it shows a **QR code** → scan it with the phone. The devices are now paired and share keys.
-3. Every device sees the same commitments and unlock state.
+- **Hold Esc for 3 s** on the lock screen (on the phone, hold the emergency button). It unlocks
+  every device for 15 minutes. It always works, even offline. It's logged and resets your streak.
+- Locks always lift at the end of the window, even if an app crashed or never opened. On iPhone,
+  Screen Time schedules handle this without the app.
+- Phone calls and SOS are never blocked. Excused days (sick or rest) must be set in advance.
+- **Test mode** is on by default. Nothing is blocked until you turn it off, and it can't be turned
+  back on while locked.
+- While locked you can't edit your way out: locked commitments can't be changed or deleted,
+  essentials can't grow and rules can't loosen.
 
-### Unlock tokens (why a PC can't fake an unlock)
+**Linking without an account:** devices pair over the local network with a 6-digit code or QR
+code and then trust each other's keys. There's no server. See [spec/protocol.md](spec/protocol.md).
 
-- When proof passes, the phone issues a token saying "unlocked until 23:59 today," **signed with a key that never leaves the phone** (Secure Enclave).
-- Each enforcer checks the signature with the phone's public key, which it got at pairing. The sync server only passes tokens along; it **can't create or change** them.
-- Tokens expire, so devices lock again on their own at the next commitment window.
-- **Offline:** an enforcer keeps the last valid token. The dead-man switch (below) still applies, so a device never stays bricked.
+## Install
 
-## Failsafe (required)
+### Desktop (macOS / Windows / Linux)
 
-Being locked out of something important is worse than skipping the gym.
+- **macOS**: open the `.dmg` and drag the app to Applications. The build is unsigned, so the
+  first time, right-click the app and choose **Open**. Allow camera and local network access when
+  asked.
+- **Windows**: run the installer (or the portable `.exe`). SmartScreen will warn because it's
+  unsigned: choose **More info**, then **Run anyway**. Allow it through the firewall on private
+  networks so your phone can reach it.
+- **Linux**: `chmod +x Prove-to-Unlock-*.AppImage && ./Prove-to-Unlock-*.AppImage`. App
+  detection needs `xdotool` (X11); without it the lock screen simply stays up.
 
-- **Always allowed:** calls, emergency SOS, messages, maps, banking, 2FA apps, and a user-editable allowlist.
-- **Emergency unlock:** always available, but it **costs something**. Examples: a 10-minute wait, typing a long phrase, or giving up your streak. Every use is logged.
-- **Excused days:** a sick or rest day is set *in advance*, not in the moment.
-- **Dead-man switch:** if the app crashes or the server can't be reached for N hours, the device unlocks. The app must never brick a device.
+It starts in **test mode**. Create a commitment under **Rules**, try it, then turn test mode off
+in **Settings** and turn on **Start at login**.
 
-## When you're not near the task area
+### Browser extension
 
-### Setting places on a map
+- **Chrome / Edge / Brave**: unzip `prove-to-unlock-chrome-*.zip`, open `chrome://extensions`,
+  turn on **Developer mode**, click **Load unpacked** and pick the folder.
+- **Firefox**: open `about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on**
+  and pick the zip (or its `manifest.json`). A permanent install needs the add-on signed by
+  Mozilla (AMO).
+- In the extension's settings, enter the **6-digit code** from the desktop app (**Devices →
+  Show pairing code**). It also works standalone, with its own Anki and focus commitments.
 
-Places are set like Life360: drop a pin on a map, name it ("Gym," "Home," "Work") and drag a circle to set its radius. You can reuse places across tasks.
+### iPhone
 
-On iOS this maps directly onto Core Location region monitoring (`CLCircularRegion` / `CLMonitor`). It wakes the app when you enter or leave a place, even in the background, without draining the battery the way constant GPS tracking would. iOS allows about 20 monitored regions per app, which is plenty for personal places.
+The `.ipa` is unsigned because Apple requires its own signing. Options:
 
-### Same building, different floor (e.g. the gym is downstairs)
+1. **Xcode** (recommended): `cd apps/ios && brew install xcodegen && xcodegen generate`, open
+   `ProveToUnlock.xcodeproj`, choose your team under Signing for both targets, and run it on your
+   phone.
+2. **Sideloading tools** (e.g. Sideloadly or AltStore) can sign `ProveToUnlock-unsigned.ipa`
+   with your Apple ID.
 
-GPS can't tell floors apart, because your apartment and the gym share the same map point, and GPS altitude is only accurate to about ±10 m. So floor-level places use other signals:
+**Screen Time blocking needs Apple's Family Controls entitlement.** It works with a paid
+developer account (the development entitlement), but free Apple IDs can't use it. Without it,
+everything else still works (proofs, linking, Anki, unlocking your computer); only the phone's
+own app blocking is missing. Publishing to the App Store needs Apple to grant the distribution
+entitlement.
 
-| Signal | How it works | Strength |
-|---|---|---|
-| **Barometer descent** (`CMAltimeter`) | The iPhone barometer measures *relative* height changes to within tens of centimeters. Tap "Heading to gym," walk down, take the photo: the app requires a drop of about N floors × 3 m. | Good. It uses relative change because absolute pressure drifts with the weather (about 8 m of "height" over a few hours), so you can't compare against a stored floor level. |
-| **"Is this *my* gym" image match** | At setup, take a few reference photos of the gym. Proof photos must match them by image embedding similarity, while still not being a repeat of a past proof. | Good. It separates "my building's gym" from "my living room." |
-| **Bluetooth beacon** (optional) | Stick a cheap iBeacon (around $15) in the gym. iOS region monitoring (`CLBeaconRegion`) knows when you're in the room. | Strongest. It works at room level even in the background. |
+Link the phone under **Devices**: scan the QR code shown by the desktop app.
 
-Default for a downstairs gym: **barometer descent + my-gym image match**, with the beacon as an upgrade.
+## Develop & test
 
-You mark two things for each task:
-
-- **Task area:** the exact place where proof is taken, like the gym's geofence.
-- **Reachable region:** the wider area from which you could realistically get there, like your city within about 30 km.
-
-| Where you are | What happens |
-|---|---|
-| **Inside the reachable region** | **Locked until you go.** "I'm home" isn't an excuse, because the gym is reachable. |
-| **Outside the reachable region (traveling)** | **A substitute task, not a free pass.** Examples: a workout logged in Apple Health, or proof at any gym with stricter checks (new-location photo plus the random challenge). |
-| **Can't do any version (sick, injured)** | A **pre-declared excused day.** These are limited per month and set in advance, not in the moment. |
-
-**Why not just let you off the hook when you're away?** Because then "away" becomes the cheat: drive 31 km and you're free. So travel status needs to be:
-
-- **Sustained:** outside the region for most of the commitment window, or overnight, not a quick trip past the line.
-- **Ideally declared ahead:** "I'm in Chicago Thu–Sun" can be checked against location history.
-- **Capped:** a set number of travel days per month before it counts as an excused day.
-
-The rule stays the same everywhere: **the honest path is always easier than the cheat.**
-
-## Beyond fitness: any commitment
-
-The engine doesn't care what the task is. It only needs a **proof type** that can verify it.
-
-### Proof types (the building blocks)
-
-| Proof type | How it's verified |
-|---|---|
-| **Photo** | Live capture, timestamp, place, repeat check against history, AI checks what's in it |
-| **Presence** | Being inside a marked place (pin + radius), on a given floor (barometer), or near a beacon, for N minutes |
-| **App or data integration** | Reading real data: AnkiConnect, GitHub, Apple Health, calendar, Duolingo, etc. |
-| **Focus time** | N Pomodoros finished with distracting apps closed |
-| **Written recap** | A short summary of what you did, checked by AI for substance and compared with past recaps |
-| **Witness** | A friend or accountability partner approves the proof |
-
-### Example commitments
-
-| Area | Commitment | Proof |
-|---|---|---|
-| Fitness | Go to the gym | Photo + presence + floor descent |
-| Study | Clear today's Anki reviews | AnkiConnect: due count = 0 |
-| Work | Ship something | GitHub: a commit or merged PR today |
-| Deep work | 4 hours focused | 8 Pomodoros finished |
-| Chores | Clean your room | Before/after photos, with AI comparison |
-| Appointments | Go to class / the doctor | Presence at the place during the scheduled time |
-| Reading | Read 20 pages | A recap that passes the AI check |
-| Health | Sleep 7+ hours, take medication | Apple Health sleep data; photo of the pill organizer |
-| Language | Daily practice | Duolingo or Anki streak data |
-| Social | Call family | Call log duration (where the platform allows it) |
-
-Commitments can be combined: "Gym **and** Anki before anything unlocks," or "any 2 of these 3."
-
-## Similar apps and what's different here
-
-Researched October 2026. The basic idea, earning screen time with proof, already exists:
-
-- **Habit Doom:** habits unlock blocked apps; live photo checked on-device by AI. iOS and Android.
-- **Lock In:** unlocks apps when you reach the gym or log a workout. It's the closest match, but it's a fitness-tracking app, so the gym is the only kind of commitment.
-- **GymLock:** locks apps *while* you're at the gym (the opposite direction).
-- **ProveIt / Accountable AI:** live photo proof checked by AI, no gallery uploads.
-- **Time Out, RepKey, Replock:** unlock by steps or reps.
-
-None of them combine:
-
-1. **The whole device locked** down to essentials, **across Mac and iPhone**, unlocked by proof on either device.
-2. **Repeat detection against all your past proof photos** (perceptual hash), not just "live and from today."
-3. **Floor-level checks** (barometer descent, my-gym image match, beacon) for tasks in the same building.
-4. **Two-circle location policy:** locked while the place is reachable, a substitute task when you're properly away.
-5. **Not tied to fitness or one habit type:** one engine where any commitment (study, work, chores, appointments, health) plugs in as a rule with its own proof type.
-
-**Strictness is what sets this apart:** cheating should be harder than doing the task.
-
-## Core model
-
-```
-rule {
-  commitment: "Go to the gym today"
-  evidence:   photo { live_capture, geofence: gym, window: today, unique_vs_history }
-  region:     { reachable: home_city_30km, away_policy: substitute(healthkit_workout | any_gym_strict) }
-  unlocks:    device_full_access
-  until:      next_commitment_window
-  failsafe:   { allowlist, emergency_cost: "10 min delay + streak reset" }
-}
+```sh
+npm install                         # workspaces: core, ui, desktop, extension
+npm test                            # unit tests (core, desktop logic)
+npm run typecheck
+npm run test:e2e                    # real Electron app + real Chromium extension (needs a display / xvfb-run)
+npm -w apps/desktop run fetch-model # MobileNet for webcam photo checks (14 MB)
+npm -w apps/desktop start           # run the desktop app
+npm run build:extension             # → apps/extension/dist/{chrome,firefox}
+cd apps/ios/ProveCore && swift test # Swift core vs. the same vectors (macOS)
 ```
 
-## Roadmap
+Test data is real, not mocked:
 
-- [ ] iPhone MVP: Screen Time shields + allowlist + one rule (gym photo)
-- [ ] Live-capture camera + timestamp + geofence check
-- [ ] Perceptual-hash history and repeat detection
-- [ ] Emergency unlock with cost + log; dead-man switch
-- [ ] Image analysis: gym classifier + screen/printout detection
-- [ ] Random challenge prompts
-- [ ] Mac blocker + cross-device sync
-- [ ] Anki and Pomodoro proof types
-- [ ] Windows blocker
+- FSRS is checked against **py-fsrs** reference vectors (`scripts/gen-fsrs-vectors.py`).
+- Anki import is checked against packages made by the **official Anki library**
+  (`scripts/make-anki-fixtures.py`).
+- The Swift core is checked against vectors generated from the TypeScript core
+  (`scripts/gen-vectors.ts`), and CI verifies Swift-signed records with TypeScript.
+- The e2e tests pair a simulated phone with the real desktop app, sync a proof and check that it
+  unlocks. They also import a real deck and review it, take a fake-camera photo and run it through
+  MobileNet, check the Esc failsafe, and load the extension in Chromium to check that real page
+  loads are blocked and unblocked.
+
+```
+packages/core        shared TypeScript: records, protocol, engine, FSRS, Anki import, geo, photo
+packages/ui          shared Preact UI: review screen, Esc hold, focus timer, camera
+apps/desktop         Electron app (main: linker, enforcer, proofs; renderer: dashboard + lock)
+apps/extension       MV3 extension for Chrome and Firefox
+apps/ios             SwiftUI app, Screen Time monitor extension, ProveCore Swift package
+spec                 protocol.md + cross-language test vectors
+```
+
+## Honest limitations
+
+This is **honest by design**: it makes doing the task easier than faking it. It doesn't stop a
+determined attacker.
+
+- An admin can kill the desktop app (Task Manager, Activity Monitor) or uninstall the extension.
+  The lock is a commitment device, not parental controls.
+- Photo checks can be fooled with real effort (e.g. GPS spoofing plus staged photos). Random
+  challenges are confirmed by you, not by a hand-pose model.
+- The phone only learns about proofs from your computer when it can reach it on the same Wi-Fi.
+  Proofs made on the phone reach the computer the same way.
+- The iPhone imports Anki's newer compressed decks through the computer (iOS has no built-in
+  zstd); legacy-format `.apkg` files import directly.
+- The browser extension can't take photo, location or floor proofs; those happen on the phone or
+  computer.

@@ -5,10 +5,16 @@ struct CommitmentsView: View {
     @EnvironmentObject var model: AppModel
     @State private var editing: Commitment?
 
-    static let templates: [(String, () -> Commitment)] = [
-        ("Go to the gym (photo + floors)", { Commitment(id: randomId(bytes: 6), title: "Go to the gym", days: [1, 2, 3, 4, 5], window: TimeWindow(start: "06:00", end: "24:00"), requirements: [.photo(PhotoRequirement(challenge: true)), .altitude(AltitudeRequirement(direction: .down, floors: 2))], createdAt: nowMillis()) }),
-        ("Clear today's Anki cards", { Commitment(id: randomId(bytes: 6), title: "Anki before anything", days: [0, 1, 2, 3, 4, 5, 6], window: TimeWindow(start: "05:00", end: "24:00"), requirements: [.anki(AnkiRequirement(mode: .due))], createdAt: nowMillis()) }),
-        ("Deep work (4 focus sessions)", { Commitment(id: randomId(bytes: 6), title: "Deep work", days: [1, 2, 3, 4, 5], window: TimeWindow(start: "08:00", end: "18:00"), requirements: [.focus(FocusRequirement(sessions: 4))], createdAt: nowMillis()) }),
+    struct Template: Identifiable {
+        var name: String
+        var make: () -> Commitment
+        var id: String { name }
+    }
+
+    static let templates: [Template] = [
+        Template(name: "Go to the gym (photo + floors)") { Commitment(id: randomId(bytes: 6), title: "Go to the gym", days: [1, 2, 3, 4, 5], window: TimeWindow(start: "06:00", end: "24:00"), requirements: [.photo(PhotoRequirement(challenge: true)), .altitude(AltitudeRequirement(direction: .down, floors: 2))], createdAt: nowMillis()) },
+        Template(name: "Clear today's Anki cards") { Commitment(id: randomId(bytes: 6), title: "Anki before anything", days: [0, 1, 2, 3, 4, 5, 6], window: TimeWindow(start: "05:00", end: "24:00"), requirements: [.anki(AnkiRequirement(mode: .due))], createdAt: nowMillis()) },
+        Template(name: "Deep work (4 focus sessions)") { Commitment(id: randomId(bytes: 6), title: "Deep work", days: [1, 2, 3, 4, 5], window: TimeWindow(start: "08:00", end: "18:00"), requirements: [.focus(FocusRequirement(sessions: 4))], createdAt: nowMillis()) },
     ]
 
     var body: some View {
@@ -31,8 +37,8 @@ struct CommitmentsView: View {
                     }
                 }
                 Section("Add") {
-                    ForEach(Self.templates, id: \.0) { t in
-                        Button("+ \(t.0)") { editing = t.1() }
+                    ForEach(Self.templates) { t in
+                        Button("+ \(t.name)") { editing = t.make() }
                     }
                     Button("+ Blank") { editing = Commitment(id: randomId(bytes: 6), title: "", days: [1, 2, 3, 4, 5], window: TimeWindow(start: "06:00", end: "24:00"), requirements: [], createdAt: nowMillis()) }
                 }
@@ -164,7 +170,7 @@ struct CommitmentEditor: View {
                             if on { commitment.days.removeAll { $0 == d } } else { commitment.days.append(d); commitment.days.sort() }
                         }
                         .buttonStyle(.bordered)
-                        .tint(on ? .accentColor : .gray)
+                        .tint(on ? Color.accentColor : Color.gray)
                     }
                 }
                 DatePicker("Locked from", selection: Binding(get: { minutesToDate(commitment.window.start) }, set: { commitment.window.start = dateToTime($0, isEnd: false) }), displayedComponents: .hourAndMinute)

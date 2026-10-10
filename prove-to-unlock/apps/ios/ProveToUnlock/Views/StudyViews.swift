@@ -1,3 +1,4 @@
+import Combine
 import ProveCore
 import SwiftUI
 import UniformTypeIdentifiers
@@ -61,6 +62,8 @@ struct StudyView: View {
     @State private var now = nowMillis()
     @State private var note: String?
 
+    static let ratingColors: [Color] = [.gray, .red, .orange, .green, .blue]
+
     var queue: StudyQueue {
         Study.buildQueue(decks: model.decks, events: model.reviews, now: now, newPerDay: model.settings.newCardsPerDay, deckIds: deckIds, time: model.time)
     }
@@ -100,7 +103,7 @@ struct StudyView: View {
                                 .frame(maxWidth: .infinity)
                             }
                             .buttonStyle(.bordered)
-                            .tint([.gray, .red, .orange, .green, .blue][r.rawValue])
+                            .tint(Self.ratingColors[r.rawValue])
                         }
                     }
                 } else {
