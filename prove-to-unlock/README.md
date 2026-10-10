@@ -72,6 +72,18 @@ Places are set like Life360: drop a pin on a map, name it ("Gym," "Home," "Work"
 
 On iOS this maps directly onto Core Location region monitoring (`CLCircularRegion` / `CLMonitor`). It wakes the app when you enter or leave a place, even in the background, without draining the battery the way constant GPS tracking would. iOS allows about 20 monitored regions per app, which is plenty for personal places.
 
+### Same building, different floor (e.g. the gym is downstairs)
+
+GPS can't tell floors apart, because your apartment and the gym share the same map point, and GPS altitude is only accurate to about ±10 m. So floor-level places use other signals:
+
+| Signal | How it works | Strength |
+|---|---|---|
+| **Barometer descent** (`CMAltimeter`) | The iPhone barometer measures *relative* height changes to within tens of centimeters. Tap "Heading to gym," walk down, take the photo: the app requires a drop of about N floors × 3 m. | Good. It uses relative change because absolute pressure drifts with the weather (about 8 m of "height" over a few hours), so you can't compare against a stored floor level. |
+| **"Is this *my* gym" image match** | At setup, take a few reference photos of the gym. Proof photos must match them by image embedding similarity, while still not being a repeat of a past proof. | Good. It separates "my building's gym" from "my living room." |
+| **Bluetooth beacon** (optional) | Stick a cheap iBeacon (around $15) in the gym. iOS region monitoring (`CLBeaconRegion`) knows when you're in the room. | Strongest. It works at room level even in the background. |
+
+Default for a downstairs gym: **barometer descent + my-gym image match**, with the beacon as an upgrade.
+
 You mark two things for each task:
 
 - **Task area:** the exact place where proof is taken, like the gym's geofence.
