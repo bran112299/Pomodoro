@@ -66,6 +66,12 @@ Being locked out of something important is worse than skipping the gym.
 
 ## When you're not near the task area
 
+### Setting places on a map
+
+Places are set like Life360: drop a pin on a map, name it ("Gym," "Home," "Work") and drag a circle to set its radius. You can reuse places across tasks.
+
+On iOS this maps directly onto Core Location region monitoring (`CLCircularRegion` / `CLMonitor`). It wakes the app when you enter or leave a place, even in the background, without draining the battery the way constant GPS tracking would. iOS allows about 20 monitored regions per app, which is plenty for personal places.
+
 You mark two things for each task:
 
 - **Task area:** the exact place where proof is taken, like the gym's geofence.
