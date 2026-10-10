@@ -41,6 +41,21 @@ Layered checks. Each one makes cheating more work than just going.
 | **Image analysis: does it look like a gym? Is it a screen or a printout?** | A picture of a monitor showing an old photo |
 | **Optional random challenge: "hold up 3 fingers," "include something blue"** | Pre-staged photos. A prompt you couldn't predict means the photo must be live. |
 
+### On-device AI (photos never leave the device)
+
+All image checks run on the device. That's private, works offline and costs nothing per check.
+
+| Check | Apple (iOS + macOS), built in |
+|---|---|
+| "What's in this photo?" labels (gym, dumbbell, bed, book…) | Vision `VNClassifyImageRequest`, a built-in classifier with over 1,000 labels |
+| "Is this *my* gym?" + "is this a repeat?" | Vision `VNGenerateImageFeaturePrintRequest`: compare feature-print distances with the reference photos (should be close) and past proofs (shouldn't be nearly identical) |
+| Task-specific checks (made bed, a photo of a screen) | A custom Core ML model trained with Create ML |
+| Written recaps | Apple's on-device Foundation Models framework (on supported devices) |
+
+The same Vision APIs exist on macOS, so the Mac gets them for free.
+
+**Windows: it doesn't need to verify anything.** Proof happens on the phone, and Windows only *enforces* the lock and listens for a synced "unlocked" signal. If Windows-side checks are needed later, run an open model (e.g. CLIP or MobileNet as ONNX) through ONNX Runtime / Windows ML, using the NPU on Copilot+ PCs.
+
 ### Threat model: honest by design
 
 This isn't meant to stop a determined attacker. It's meant to make **doing the task easier than faking it**. Someone who spoofs GPS and forges a live capture to skip the gym is only cheating themselves. The goal is enough friction that the honest path is always the lazy one.
