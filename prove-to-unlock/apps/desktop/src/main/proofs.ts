@@ -1,0 +1,149 @@
+// Turning local activity into signed proof records. Pure logic (no Electron) so it's unit-tested.
+
+import {
+  type AnkiDetail,
+  type AnkiRequirement,
+  type Config,
+  type Deck,
+  type Ledger,
+  type PhotoDetail,
+  type PhotoRequirement,
+  type ProofBody,
+  buildQueue,
+  checkPhotoProof,
+  dayKey,
+  evaluate,
+  honestReviewsToday,
+  referenceSimilarity,
+} from "@ptu/core";
+
+export interface ProofContext {
+  ledger: Ledger;
+  decks: Deck[];
+  now: number;
+  newCardsPerDay: number;
+  tz?: string;
+}
+
+function proofsToday(ledger: Ledger, cid: string, day: string, kind: ProofBody["kind"]) {
+  return ledger
+    .records()
+    .filter((r) => r.payload.typ === "proof")
+    .map((r) => ({ iss: r.payload.iss, body: r.payload.body as ProofBody }))
+    .filter((p) => p.body.cid === cid && p.body.day === day && p.body.kind === kind);
+}
+
+/** Commitments that are currently active (inside their window today, enabled). */
+export function activeCommitments(config: Config, ledger: Ledger, now: number, tz?: string) {
+  return evaluate({ config, records: ledger.records(), now, tz }).commitments.filter(
+    (c) => c.unlockedBy === undefined || c.unlockedBy === "proven" || c.unlockedBy === "unlock-record" || c.unlockedBy === "emergency",
+  );
+}
+
+/**
+ * After reviews, issue Anki proofs for every active commitment with an Anki requirement.
+ * Proofs carry only reviews not already claimed by this device today, so totals never
+ * double-count, and reviews done on several devices add up.
+ */
+export async function issueAnkiProofs(ctx: ProofContext): Promise<number> {
+  const { ledger, now, tz } = ctx;
+  const config = ledger.config();
+  const day = dayKey(now, tz);
+  let issued = 0;
+  for (const cs of activeCommitments(config, ledger, now, tz)) {
+    const c = cs.commitment;
+    const reqs = cs.mode === "away" ? (c.away?.requirements ?? []) : c.requirements;
+    for (const r of reqs) {
+      if (r.kind !== "anki") continue;
+      const req = r as AnkiRequirement;
+      const existing = proofsToday(ledger, c.id, day, "anki");
+      const mine = existing.filter((p) => p.iss === ledger.deviceId);
+      const claimed = mine.reduce((s, p) => s + (p.body.detail as AnkiDetail).reviews, 0);
+      const others = existing.filter((p) => p.iss !== ledger.deviceId).reduce((s, p) => s + (p.body.detail as AnkiDetail).reviews, 0);
+      const honest = honestReviewsToday(ledger.reviews(), now, {
+        minAnswerMs: config.policy.minAnswerMs,
+        deviceId: ledger.deviceId,
+        rolloverHour: 0,
+        tz,
+        deckIds: req.deckIds,
+      });
+      const delta = honest - claimed;
+      const deckIds = req.deckIds ?? [];
+
+      if (req.mode === "count") {
+        const target = req.count ?? 20;
+        if (delta > 0 && (others + honest >= target || delta >= 10)) {
+          await ledger.issue("proof", { cid: c.id, day, kind: "anki", at: now, detail: { reviews: delta, cleared: false, deckIds } }, now);
+          issued++;
+        }
+      } else {
+        if (existing.some((p) => (p.body.detail as AnkiDetail).cleared)) continue;
+        const selected = req.deckIds?.length ? ctx.decks.filter((d) => req.deckIds!.includes(d.id)) : ctx.decks;
+        if (!selected.some((d) => d.cards.length > 0)) continue; // nothing imported: can't "clear" an empty queue
+        const q = buildQueue(selected, ledger.reviews(), now, { newPerDay: ctx.newCardsPerDay, tz });
+        if (q.cleared) {
+          await ledger.issue("proof", { cid: c.id, day, kind: "anki", at: now, detail: { reviews: Math.max(0, delta), cleared: true, deckIds } }, now);
+          issued++;
+        }
+      }
+    }
+  }
+  return issued;
+}
+
+export async function issueFocusProof(ledger: Ledger, commitmentId: string, minutes: number, now: number, tz?: string) {
+  if (!(minutes >= 1 && minutes <= 240)) return { ok: false, failures: ["invalid session length"] };
+  const c = ledger.config().commitments.find((x) => x.id === commitmentId);
+  if (!c) return { ok: false, failures: ["unknown commitment"] };
+  await ledger.issue("proof", { cid: commitmentId, day: dayKey(now, tz), kind: "focus", at: now, detail: { sessions: 1, minutes } }, now);
+  return { ok: true, failures: [] };
+}
+
+export interface PhotoInput {
+  commitmentId: string;
+  requirementIndex: number;
+  dhash: string;
+  labels: { label: string; confidence: number }[];
+  embedding: number[];
+  capturedAt: number;
+  challenge?: { prompt: string; confirmed: boolean };
+}
+
+/** Validate and, if it passes, record a photo proof. Same checks every other device re-runs. */
+export async function issuePhotoProof(ledger: Ledger, input: PhotoInput, references: number[][] | undefined, now: number, tz?: string) {
+  const config = ledger.config();
+  const c = config.commitments.find((x) => x.id === input.commitmentId);
+  if (!c) return { ok: false, failures: ["unknown commitment"] };
+  const status = evaluate({ config, records: ledger.records(), now, tz }).commitments.find((s) => s.commitment.id === c.id);
+  const reqs = status?.mode === "away" ? (c.away?.requirements ?? []) : c.requirements;
+  const req = reqs[input.requirementIndex];
+  if (!req || req.kind !== "photo") return { ok: false, failures: ["that requirement isn't a photo"] };
+  if (Math.abs(now - input.capturedAt) > 2 * 60_000) return { ok: false, failures: ["photo is too old; take a new one"] };
+
+  let similarity: number | undefined;
+  if (references?.length && input.embedding.length) {
+    try {
+      similarity = referenceSimilarity(input.embedding, references);
+    } catch {
+      similarity = undefined;
+    }
+  }
+  const detail: PhotoDetail = {
+    dhash: input.dhash,
+    labels: input.labels.slice(0, 10).map((l) => ({ label: String(l.label).slice(0, 80), confidence: Number(l.confidence) || 0 })),
+    referenceSimilarity: similarity,
+    live: true,
+    capturedAt: input.capturedAt,
+    // Computers have no GPS: a place-bound photo requirement must be proven on the phone.
+    insidePlace: false,
+    challenge: input.challenge,
+  };
+  const earlier = ledger
+    .records()
+    .filter((r) => r.payload.typ === "proof" && (r.payload.body as ProofBody).kind === "photo")
+    .map((r) => (r.payload.body as ProofBody).detail as PhotoDetail);
+  const check = checkPhotoProof(req as PhotoRequirement, detail, earlier, config.places);
+  if (!check.ok) return check;
+  await ledger.issue("proof", { cid: c.id, day: dayKey(now, tz), kind: "photo", at: now, detail }, now);
+  return { ok: true, failures: [] };
+}

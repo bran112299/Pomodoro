@@ -325,3 +325,52 @@ export function streak(input: EngineInput, commitmentId: string, maxDays = 365):
   }
   return count;
 }
+
+function same(a: unknown, b: unknown): boolean {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+
+/**
+ * While locked you can't talk your way out by editing the rules: a locked commitment can't be
+ * changed or removed, essentials can't grow, policy can't loosen, and only future days can be
+ * excused. Adding new commitments or places is always fine. Returns why a change is blocked.
+ */
+export function configChangeBlockedWhileLocked(prev: Config, next: Config, state: LockState): string | null {
+  if (!state.locked) return null;
+  for (const s of state.commitments.filter((c) => c.locked)) {
+    const after = next.commitments.find((c) => c.id === s.commitment.id);
+    if (!after) return `"${s.commitment.title}" is locked right now; it can't be deleted until you've unlocked it.`;
+    const before = prev.commitments.find((c) => c.id === s.commitment.id);
+    if (!same(before, after)) return `"${s.commitment.title}" is locked right now; edit it after you've unlocked it.`;
+    const usedPlaces = new Set<string>();
+    for (const r of [...after.requirements, ...(after.away?.requirements ?? [])]) {
+      if (r.kind === "presence") usedPlaces.add(r.placeId);
+      if (r.kind === "photo" && r.placeId) usedPlaces.add(r.placeId);
+    }
+    if (after.away) usedPlaces.add(after.away.regionPlaceId);
+    for (const id of usedPlaces) {
+      if (!same(prev.places.find((p) => p.id === id), next.places.find((p) => p.id === id))) {
+        return "A place used by a locked commitment can't be moved or resized until you've unlocked.";
+      }
+    }
+  }
+  const newApps = next.essentials.apps.filter((a) => !prev.essentials.apps.includes(a));
+  const newSites = next.essentials.sites.filter((a) => !prev.essentials.sites.includes(a));
+  if (newApps.length || newSites.length) return "You can't add essentials while locked. Add them after you've unlocked.";
+  const p = prev.policy;
+  const n = next.policy;
+  if (
+    n.maxExcusedPerMonth > p.maxExcusedPerMonth ||
+    n.maxAwayDaysPerMonth > p.maxAwayDaysPerMonth ||
+    n.emergencyMinutes > p.emergencyMinutes ||
+    n.awayOutsideFraction < p.awayOutsideFraction ||
+    n.awayMinHours < p.awayMinHours ||
+    n.minAnswerMs < p.minAnswerMs
+  ) {
+    return "Rules can't be loosened while locked.";
+  }
+  const today = state.commitments[0]?.day;
+  const added = next.excused.filter((e) => !prev.excused.some((x) => x.day === e.day));
+  if (today && added.some((e) => e.day <= today)) return "Excused days must be set in advance, not for today.";
+  return null;
+}

@@ -14,10 +14,12 @@
     "typecheck": "tsc -p packages/core && tsc -p packages/ui && tsc -p apps/desktop && tsc -p apps/extension",
     "vectors": "tsx scripts/gen-vectors.ts",
     "build:extension": "npm -w apps/extension run build",
-    "build:desktop": "npm -w apps/desktop run build"
+    "build:desktop": "npm -w apps/desktop run build",
+    "test:e2e": "npm run build:desktop && vitest run --config vitest.e2e.config.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
+    "playwright": "^1.49.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"

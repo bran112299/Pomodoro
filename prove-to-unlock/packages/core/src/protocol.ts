@@ -40,6 +40,8 @@ export interface InfoResponse extends DeviceHello {
 export interface PairRequest {
   code: string;
   device: DeviceHello;
+  /** Computers include where they can be reached so the other side can sync back. */
+  listen?: { hosts: string[]; port: number };
 }
 
 export interface PairResponse {
