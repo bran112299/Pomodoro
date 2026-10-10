@@ -6,6 +6,8 @@ Your Mac, PC or iPhone stays locked down to the essentials until you've done wha
 
 > "Go to the gym today." → take a fresh photo at the gym → everything unlocks.
 
+**This isn't a fitness app.** The gym is just the first example. It's a general **commitment engine**: any task you can prove can be what unlocks your device, whether that's studying, work, chores, appointments, health or habits.
+
 Nothing is locked forever. You get access by showing evidence that you did something, not by asking for it.
 
 ## The pattern
@@ -103,19 +105,45 @@ You mark two things for each task:
 
 The rule stays the same everywhere: **the honest path is always easier than the cheat.**
 
-## Other proof types (same engine)
+## Beyond fitness: any commitment
 
-- **Anki:** unlock when today's due reviews are done (checked via AnkiConnect on desktop). You have to actually answer honestly for this to be worth anything.
-- **Pomodoro:** N finished focus sessions (the original seed, from this repo).
-- **Steps or workouts:** Apple Health / HealthKit data.
-- **Reading or writing:** a short summary of what you read, or a word count.
+The engine doesn't care what the task is. It only needs a **proof type** that can verify it.
+
+### Proof types (the building blocks)
+
+| Proof type | How it's verified |
+|---|---|
+| **Photo** | Live capture, timestamp, place, repeat check against history, AI checks what's in it |
+| **Presence** | Being inside a marked place (pin + radius), on a given floor (barometer), or near a beacon, for N minutes |
+| **App or data integration** | Reading real data: AnkiConnect, GitHub, Apple Health, calendar, Duolingo, etc. |
+| **Focus time** | N Pomodoros finished with distracting apps closed |
+| **Written recap** | A short summary of what you did, checked by AI for substance and compared with past recaps |
+| **Witness** | A friend or accountability partner approves the proof |
+
+### Example commitments
+
+| Area | Commitment | Proof |
+|---|---|---|
+| Fitness | Go to the gym | Photo + presence + floor descent |
+| Study | Clear today's Anki reviews | AnkiConnect: due count = 0 |
+| Work | Ship something | GitHub: a commit or merged PR today |
+| Deep work | 4 hours focused | 8 Pomodoros finished |
+| Chores | Clean your room | Before/after photos, with AI comparison |
+| Appointments | Go to class / the doctor | Presence at the place during the scheduled time |
+| Reading | Read 20 pages | A recap that passes the AI check |
+| Health | Sleep 7+ hours, take medication | Apple Health sleep data; photo of the pill organizer |
+| Language | Daily practice | Duolingo or Anki streak data |
+| Social | Call family | Call log duration (where the platform allows it) |
+
+Commitments can be combined: "Gym **and** Anki before anything unlocks," or "any 2 of these 3."
 
 ## Similar apps and what's different here
 
 Researched October 2026. The basic idea, earning screen time with proof, already exists:
 
 - **Habit Doom:** habits unlock blocked apps; live photo checked on-device by AI. iOS and Android.
-- **GymLock / Lock In:** gym location tied to app blocking.
+- **Lock In:** unlocks apps when you reach the gym or log a workout. It's the closest match, but it's a fitness-tracking app, so the gym is the only kind of commitment.
+- **GymLock:** locks apps *while* you're at the gym (the opposite direction).
 - **ProveIt / Accountable AI:** live photo proof checked by AI, no gallery uploads.
 - **Time Out, RepKey, Replock:** unlock by steps or reps.
 
@@ -125,7 +153,7 @@ None of them combine:
 2. **Repeat detection against all your past proof photos** (perceptual hash), not just "live and from today."
 3. **Floor-level checks** (barometer descent, my-gym image match, beacon) for tasks in the same building.
 4. **Two-circle location policy:** locked while the place is reachable, a substitute task when you're properly away.
-5. **One engine for any proof:** gym, Anki, Pomodoro and others as plug-in rules.
+5. **Not tied to fitness or one habit type:** one engine where any commitment (study, work, chores, appointments, health) plugs in as a rule with its own proof type.
 
 **Strictness is what sets this apart:** cheating should be harder than doing the task.
 
