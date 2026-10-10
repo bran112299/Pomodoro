@@ -1,0 +1,4904 @@
+{
+ "about": "py-fsrs 4.1.1 (FSRS-5), default parameters, learning steps [1m,10m], relearning [10m], no fuzz",
+ "sequences": [
+  [
+   {
+    "at": 1767603600000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767603930000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767603930000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604530000,
+    "stability": 1.6665899525670382,
+    "difficulty": 6.473291771547592
+   },
+   {
+    "at": 1767604230000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604830000,
+    "stability": 1.3996711962933535,
+    "difficulty": 7.027982096179189
+   },
+   {
+    "at": 1767604530000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605130000,
+    "stability": 1.175501781176413,
+    "difficulty": 7.4905271309573065
+   },
+   {
+    "at": 1767605130000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605190000,
+    "stability": 0.5889599226096586,
+    "difficulty": 8.281564733628539
+   },
+   {
+    "at": 1767605232000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605292000,
+    "stability": 0.2950857208342401,
+    "difficulty": 8.81342639646252
+   },
+   {
+    "at": 1767605412000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606012000,
+    "stability": 0.41541318367052116,
+    "difficulty": 8.787717342349898
+   },
+   {
+    "at": 1767605712000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767692112000,
+    "stability": 0.5848067221938389,
+    "difficulty": 8.762126549886196
+   }
+  ],
+  [
+   {
+    "at": 1767603660000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767603990000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767603825000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767603885000,
+    "stability": 0.5931426183664849,
+    "difficulty": 7.607711323234045
+   },
+   {
+    "at": 1767603885000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604485000,
+    "stability": 0.8350091043703922,
+    "difficulty": 7.587548558458277
+   },
+   {
+    "at": 1767604485000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605085000,
+    "stability": 0.7012751938350212,
+    "difficulty": 7.957138278226642
+   },
+   {
+    "at": 1767605505000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606105000,
+    "stability": 0.5889599226096587,
+    "difficulty": 8.265331665045553
+   },
+   {
+    "at": 1767606105000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767692505000,
+    "stability": 0.8291208256839274,
+    "difficulty": 8.24214384669745
+   }
+  ],
+  [
+   {
+    "at": 1767603720000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604320000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767605520000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768210320000,
+    "stability": 7.487502277394533,
+    "difficulty": 4.510985606964673
+   },
+   {
+    "at": 1769445600000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769446200000,
+    "stability": 2.4104628276521636,
+    "difficulty": 6.2782416247367845
+   },
+   {
+    "at": 1769447400000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769448300000,
+    "stability": 2.0244064140695404,
+    "difficulty": 6.865333726568628
+   },
+   {
+    "at": 1769448300000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769707500000,
+    "stability": 2.8499010766571464,
+    "difficulty": 6.848585898737521
+   },
+   {
+    "at": 1769596620000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770028620000,
+    "stability": 4.824927428093615,
+    "difficulty": 6.831915110914436
+   },
+   {
+    "at": 1770918240000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1773164640000,
+    "stability": 26.453749310561918,
+    "difficulty": 6.815321008715338
+   },
+   {
+    "at": 1777682160000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1788050160000,
+    "stability": 119.82611744485017,
+    "difficulty": 6.798803239386356
+   },
+   {
+    "at": 1782866820000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1799714820000,
+    "stability": 195.3806818330165,
+    "difficulty": 6.7823614517962865
+   },
+   {
+    "at": 1833427980000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1833428580000,
+    "stability": 10.075383586511618,
+    "difficulty": 7.8054227975073625
+   },
+   {
+    "at": 1833429780000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1833430380000,
+    "stability": 5.048054569033413,
+    "difficulty": 8.493287832840215
+   },
+   {
+    "at": 1833430380000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1834035180000,
+    "stability": 7.1065059127095624,
+    "difficulty": 8.469051416120257
+   },
+   {
+    "at": 1834488660000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1836043860000,
+    "stability": 18.431459847460594,
+    "difficulty": 8.444926486917211
+   },
+   {
+    "at": 1839167460000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1844351460000,
+    "stability": 59.70005469061371,
+    "difficulty": 8.420912532388499
+   }
+  ],
+  [
+   {
+    "at": 1767603780000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604110000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767603945000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604275000,
+    "stability": 0.9942462110608663,
+    "difficulty": 7.040501547390819
+   },
+   {
+    "at": 1767604110000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604170000,
+    "stability": 0.4981457118128132,
+    "difficulty": 7.978985748274057
+   },
+   {
+    "at": 1767604170000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604770000,
+    "stability": 0.7012751938350211,
+    "difficulty": 7.957115121143104
+   },
+   {
+    "at": 1767604770000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605370000,
+    "stability": 0.5889599226096586,
+    "difficulty": 8.26531235482229
+   },
+   {
+    "at": 1767605070000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767691470000,
+    "stability": 0.8291208256839273,
+    "difficulty": 8.242124625301216
+   },
+   {
+    "at": 1767691470000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1767777870000,
+    "stability": 1.151114059209057,
+    "difficulty": 8.502976011747375
+   },
+   {
+    "at": 1767950670000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768296270000,
+    "stability": 4.353215007869375,
+    "difficulty": 8.478695029404443
+   }
+  ],
+  [
+   {
+    "at": 1767603840000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604440000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767604440000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767950040000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1767963720000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1770901320000,
+    "stability": 33.618681853613246,
+    "difficulty": 4.500033631888484
+   },
+   {
+    "at": 1770934980000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1780179780000,
+    "stability": 106.70534294815667,
+    "difficulty": 4.494166184492905
+   },
+   {
+    "at": 1798703940000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1817971140000,
+    "stability": 223.26394975990615,
+    "difficulty": 5.377629326636168
+   },
+   {
+    "at": 1817972220000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1865924220000,
+    "stability": 554.5544496083251,
+    "difficulty": 5.3677249390447495
+   },
+   {
+    "at": 1961852760000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2170335960000,
+    "stability": 2413.0808695680744,
+    "difficulty": 5.357866111636252
+   },
+   {
+    "at": 2170344720000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 2170345320000,
+    "stability": 18.27858308532359,
+    "difficulty": 6.847649794355124
+   },
+   {
+    "at": 2170345320000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 2170345920000,
+    "stability": 9.158091507588102,
+    "difficulty": 7.849320036171818
+   },
+   {
+    "at": 2170347120000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2171470320000,
+    "stability": 12.892497606314862,
+    "difficulty": 7.828045871316536
+   },
+   {
+    "at": 2172258900000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2175455700000,
+    "stability": 37.09011971679082,
+    "difficulty": 7.806869567619588
+   },
+   {
+    "at": 2181878640000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2193456240000,
+    "stability": 134.13427837084978,
+    "difficulty": 7.785790674919646
+   },
+   {
+    "at": 2193484140000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2215516140000,
+    "stability": 255.0637382186075,
+    "difficulty": 7.764808745126124
+   }
+  ],
+  [
+   {
+    "at": 1767603900000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768986300000,
+    "stability": 15.69105,
+    "difficulty": 3.2245015893713678
+   },
+   {
+    "at": 1769018040000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1774288440000,
+    "stability": 60.708278951323095,
+    "difficulty": 3.2245015893713673
+   },
+   {
+    "at": 1778002620000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1803231420000,
+    "stability": 291.7919000143467,
+    "difficulty": 3.224501589371367
+   },
+   {
+    "at": 1853692020000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1908037620000,
+    "stability": 629.1606043082533,
+    "difficulty": 4.318881718775723
+   }
+  ],
+  [
+   {
+    "at": 1767603960000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604020000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767604020000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604620000,
+    "stability": 0.5666983024925972,
+    "difficulty": 7.176636167311107
+   },
+   {
+    "at": 1767604620000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767691020000,
+    "stability": 0.7977815576897062,
+    "difficulty": 7.158456348252584
+   },
+   {
+    "at": 1767863820000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768295820000,
+    "stability": 5.498315017953573,
+    "difficulty": 7.140360156361731
+   },
+   {
+    "at": 1768105380000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768882980000,
+    "stability": 8.889248124718087,
+    "difficulty": 7.122347206953576
+   },
+   {
+    "at": 1768894320000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770795120000,
+    "stability": 22.412292675429665,
+    "difficulty": 7.104417117112697
+   },
+   {
+    "at": 1770809760000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1775302560000,
+    "stability": 52.247885712072495,
+    "difficulty": 7.086569505685087
+   },
+   {
+    "at": 1778450340000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1778450940000,
+    "stability": 4.969631013584089,
+    "difficulty": 8.00995997860017
+   },
+   {
+    "at": 1778450640000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1779055440000,
+    "stability": 6.996103488790631,
+    "difficulty": 7.987946870009718
+   },
+   {
+    "at": 1779076140000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1779853740000,
+    "stability": 8.944568312310492,
+    "difficulty": 8.291022326167562
+   }
+  ],
+  [
+   {
+    "at": 1767604020000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768986420000,
+    "stability": 15.69105,
+    "difficulty": 3.2245015893713678
+   },
+   {
+    "at": 1769010180000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1774280580000,
+    "stability": 60.708278951323095,
+    "difficulty": 3.2245015893713673
+   },
+   {
+    "at": 1777971660000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1803200460000,
+    "stability": 291.7919000143467,
+    "difficulty": 3.224501589371367
+   }
+  ],
+  [
+   {
+    "at": 1767604080000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604680000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767605100000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605160000,
+    "stability": 1.589763507266002,
+    "difficulty": 6.796932579932991
+   },
+   {
+    "at": 1767605160000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605760000,
+    "stability": 2.2380233037692734,
+    "difficulty": 6.780499397376408
+   },
+   {
+    "at": 1767606960000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607560000,
+    "stability": 1.8795845673341403,
+    "difficulty": 7.2841563174754915
+   },
+   {
+    "at": 1767607980000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767953580000,
+    "stability": 4.435358880702803,
+    "difficulty": 6.82681818232237
+   },
+   {
+    "at": 1767959220000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768996020000,
+    "stability": 11.541695317855229,
+    "difficulty": 6.810247525994796
+   },
+   {
+    "at": 1771097340000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1776194940000,
+    "stability": 58.53038057395162,
+    "difficulty": 6.793753094686328
+   },
+   {
+    "at": 1776197340000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1787861340000,
+    "stability": 135.37905377722726,
+    "difficulty": 6.777334537761879
+   },
+   {
+    "at": 1787864580000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1813352580000,
+    "stability": 295.288488705807,
+    "difficulty": 6.760991506199283
+   },
+   {
+    "at": 1813387200000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1921473600000,
+    "stability": 1250.786749251775,
+    "difficulty": 6.221558223301145
+   },
+   {
+    "at": 1997155320000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2281756920000,
+    "stability": 3293.9747846382343,
+    "difficulty": 6.207771762785067
+   },
+   {
+    "at": 2281783980000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 2281784580000,
+    "stability": 19.91213504363888,
+    "difficulty": 7.41909195000683
+   }
+  ],
+  [
+   {
+    "at": 1767604140000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767604740000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767605160000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605760000,
+    "stability": 2.664816680910697,
+    "difficulty": 6.0349502556102195
+   },
+   {
+    "at": 1767605760000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605820000,
+    "stability": 1.3351491688829296,
+    "difficulty": 7.302893764397073
+   },
+   {
+    "at": 1767605940000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606000000,
+    "stability": 0.6689478176636033,
+    "difficulty": 8.155407653352116
+   },
+   {
+    "at": 1767605970000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606570000,
+    "stability": 0.9417254818683181,
+    "difficulty": 8.132725485457803
+   },
+   {
+    "at": 1767606570000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767692970000,
+    "stability": 1.3257340255590584,
+    "difficulty": 8.110147655535805
+   },
+   {
+    "at": 1767692970000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952170000,
+    "stability": 2.7682260605573856,
+    "difficulty": 8.087673683631447
+   },
+   {
+    "at": 1768484010000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769520810000,
+    "stability": 12.34901057171483,
+    "difficulty": 8.06530309199785
+   },
+   {
+    "at": 1771606470000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1781283270000,
+    "stability": 111.56271821214347,
+    "difficulty": 7.730542696178002
+   },
+   {
+    "at": 1788080610000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1812099810000,
+    "stability": 278.1623313859324,
+    "difficulty": 7.709814907086692
+   },
+   {
+    "at": 1812105450000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1856515050000,
+    "stability": 513.5818180365377,
+    "difficulty": 7.689182465825201
+   },
+   {
+    "at": 1834330590000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1934122590000,
+    "stability": 1154.6740606176572,
+    "difficulty": 7.295401131077392
+   },
+   {
+    "at": 1934139150000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2114196750000,
+    "stability": 2084.0208242780172,
+    "difficulty": 7.2766749931855434
+   }
+  ],
+  [
+   {
+    "at": 1767604200000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604530000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767604530000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605130000,
+    "stability": 1.6665899525670382,
+    "difficulty": 6.473291771547592
+   },
+   {
+    "at": 1767605130000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767777930000,
+    "stability": 2.3461773619946804,
+    "difficulty": 6.458347336709581
+   },
+   {
+    "at": 1768149210000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769272410000,
+    "stability": 13.090120295267148,
+    "difficulty": 6.443471646271825
+   },
+   {
+    "at": 1769306310000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1776131910000,
+    "stability": 78.7489583182209,
+    "difficulty": 5.854213070749103
+   },
+   {
+    "at": 1780935690000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1780936290000,
+    "stability": 6.023952352888775,
+    "difficulty": 7.181373397537701
+   }
+  ],
+  [
+   {
+    "at": 1767604260000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768986660000,
+    "stability": 15.69105,
+    "difficulty": 3.2245015893713678
+   },
+   {
+    "at": 1769015820000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1774286220000,
+    "stability": 60.708278951323095,
+    "difficulty": 3.2245015893713673
+   },
+   {
+    "at": 1774313940000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1782521940000,
+    "stability": 94.5730371158227,
+    "difficulty": 4.318881718775723
+   },
+   {
+    "at": 1782546120000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1806738120000,
+    "stability": 280.2577133277351,
+    "difficulty": 4.313847570180463
+   },
+   {
+    "at": 1855149060000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1983712260000,
+    "stability": 1488.1683315141288,
+    "difficulty": 4.308836578668741
+   }
+  ],
+  [
+   {
+    "at": 1767604320000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604380000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767604380000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604710000,
+    "stability": 0.33807814525704416,
+    "difficulty": 7.629716592535107
+   },
+   {
+    "at": 1767604941000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605271000,
+    "stability": 0.2839320141608323,
+    "difficulty": 7.992301348362301
+   },
+   {
+    "at": 1767605502000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606102000,
+    "stability": 0.3997113164780716,
+    "difficulty": 7.970369469470943
+   },
+   {
+    "at": 1767606102000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767692502000,
+    "stability": 0.5627020855426766,
+    "difficulty": 7.948538477222485
+   },
+   {
+    "at": 1767692502000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767865302000,
+    "stability": 2.089677951005275,
+    "difficulty": 7.926807907538369
+   },
+   {
+    "at": 1767778962000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768124562000,
+    "stability": 3.5858325351408804,
+    "difficulty": 7.9051772984748006
+   },
+   {
+    "at": 1768138302000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768915902000,
+    "stability": 8.876229719844577,
+    "difficulty": 7.883646190212924
+   },
+   {
+    "at": 1769478702000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1771725102000,
+    "stability": 25.848729474579173,
+    "difficulty": 7.862214125049053
+   },
+   {
+    "at": 1770616602000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1774159002000,
+    "stability": 40.52449088856366,
+    "difficulty": 7.840880647384935
+   },
+   {
+    "at": 1772388402000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1776362802000,
+    "stability": 45.517289578132015,
+    "difficulty": 8.168386779741102
+   }
+  ],
+  [
+   {
+    "at": 1767604380000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604440000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767604440000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604500000,
+    "stability": 0.20168903241409677,
+    "difficulty": 8.082797017759107
+   },
+   {
+    "at": 1767604470000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605070000,
+    "stability": 0.28393201416083236,
+    "difficulty": 8.060448858788522
+   },
+   {
+    "at": 1767605070000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767691470000,
+    "stability": 0.6700099598658837,
+    "difficulty": 7.724926735528451
+   },
+   {
+    "at": 1767864270000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768901070000,
+    "stability": 12.289598794848935,
+    "difficulty": 7.336754400161101
+   },
+   {
+    "at": 1768382970000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770197370000,
+    "stability": 20.94386828978193,
+    "difficulty": 7.317838037231468
+   },
+   {
+    "at": 1770216690000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1770217290000,
+    "stability": 2.924778073679575,
+    "difficulty": 8.165455577461799
+   },
+   {
+    "at": 1770217290000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770562890000,
+    "stability": 4.117418381621621,
+    "difficulty": 8.142727189116583
+   },
+   {
+    "at": 1770832350000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1771869150000,
+    "stability": 12.068292683468819,
+    "difficulty": 8.120103351357754
+   },
+   {
+    "at": 1773953670000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1777841670000,
+    "stability": 44.54477782069559,
+    "difficulty": 8.097583583252616
+   }
+  ],
+  [
+   {
+    "at": 1767604440000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604500000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767604470000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605070000,
+    "stability": 0.5666983024925972,
+    "difficulty": 7.176636167311107
+   },
+   {
+    "at": 1767605490000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767691890000,
+    "stability": 0.7977815576897062,
+    "difficulty": 7.158456348252584
+   },
+   {
+    "at": 1767864690000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768037490000,
+    "stability": 1.8859550537407914,
+    "difficulty": 7.599326968962449
+   },
+   {
+    "at": 1768044510000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768476510000,
+    "stability": 5.041177000235942,
+    "difficulty": 7.57920277221633
+   }
+  ],
+  [
+   {
+    "at": 1767604500000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605100000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767604800000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604860000,
+    "stability": 1.589763507266002,
+    "difficulty": 6.796932579932991
+   },
+   {
+    "at": 1767604980000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605040000,
+    "stability": 0.7965168638621807,
+    "difficulty": 7.815219834227215
+   },
+   {
+    "at": 1767605040000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605370000,
+    "stability": 0.6689478176636035,
+    "difficulty": 8.146988747023737
+   },
+   {
+    "at": 1767606030000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606630000,
+    "stability": 0.9417254818683183,
+    "difficulty": 8.124345306098535
+   },
+   {
+    "at": 1767606630000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767693030000,
+    "stability": 1.3257340255590588,
+    "difficulty": 8.101806025001588
+   },
+   {
+    "at": 1767865830000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1767866430000,
+    "stability": 0.6759127530438694,
+    "difficulty": 8.692563917414283
+   },
+   {
+    "at": 1767866430000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952830000,
+    "stability": 0.9515305174091637,
+    "difficulty": 8.667410830705284
+   },
+   {
+    "at": 1768013310000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768099710000,
+    "stability": 1.2235834534645367,
+    "difficulty": 8.85761357064103
+   },
+   {
+    "at": 1768099710000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1768100310000,
+    "stability": 0.4927303482018145,
+    "difficulty": 9.200738316012796
+   },
+   {
+    "at": 1768100310000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768186710000,
+    "stability": 0.69365160082612,
+    "difficulty": 9.173247627070245
+   }
+  ],
+  [
+   {
+    "at": 1767604560000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605160000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767605160000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767950760000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1767958560000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768563360000,
+    "stability": 6.724081693772751,
+    "difficulty": 6.0270563403407795
+   },
+   {
+    "at": 1768594140000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770408540000,
+    "stability": 20.629381372782674,
+    "difficulty": 6.01416458848632
+   },
+   {
+    "at": 1774044000000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1783720800000,
+    "stability": 112.41182893966878,
+    "difficulty": 6.001332138690391
+   },
+   {
+    "at": 1783752720000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1783753320000,
+    "stability": 6.1058601954231,
+    "difficulty": 7.280290303441554
+   }
+  ],
+  [
+   {
+    "at": 1767604620000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767604950000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767604950000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605280000,
+    "stability": 0.9942462110608663,
+    "difficulty": 7.040501547390819
+   },
+   {
+    "at": 1767605115000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605445000,
+    "stability": 0.835009104370392,
+    "difficulty": 7.500966847928992
+   },
+   {
+    "at": 1767605280000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605610000,
+    "stability": 0.701275193835021,
+    "difficulty": 7.884939542230092
+   },
+   {
+    "at": 1767605610000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606210000,
+    "stability": 0.9872350314904322,
+    "difficulty": 7.8635015276469415
+   },
+   {
+    "at": 1767606210000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767692610000,
+    "stability": 1.3898010595127406,
+    "difficulty": 7.842162127930874
+   },
+   {
+    "at": 1767692610000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768211010000,
+    "stability": 6.09309312977468,
+    "difficulty": 7.472386398475805
+   }
+  ],
+  [
+   {
+    "at": 1767604680000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605010000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767605241000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605841000,
+    "stability": 1.6665899525670382,
+    "difficulty": 6.473291771547592
+   },
+   {
+    "at": 1767605841000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767778641000,
+    "stability": 2.3461773619946804,
+    "difficulty": 6.458347336709581
+   },
+   {
+    "at": 1767903321000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1769631321000,
+    "stability": 20.36702554708745,
+    "difficulty": 5.871423058100517
+   },
+   {
+    "at": 1773100881000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1773101481000,
+    "stability": 3.9791752197874235,
+    "difficulty": 7.192944696372503
+   },
+   {
+    "at": 1773101901000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1773620301000,
+    "stability": 5.601768332813664,
+    "difficulty": 7.174689858080298
+   },
+   {
+    "at": 1773640701000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1774331901000,
+    "stability": 7.764419831782745,
+    "difficulty": 7.612863764241542
+   },
+   {
+    "at": 1774337601000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1775892801000,
+    "stability": 18.415893219621957,
+    "difficulty": 7.592677298237139
+   },
+   {
+    "at": 1775141301000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1775141901000,
+    "stability": 2.4603997964743987,
+    "difficulty": 8.350246371068726
+   },
+   {
+    "at": 1775143101000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1775143701000,
+    "stability": 1.2327304789535762,
+    "difficulty": 8.859605149244617
+   },
+   {
+    "at": 1775143401000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1775316201000,
+    "stability": 1.735402483800467,
+    "difficulty": 8.8336836728692
+   },
+   {
+    "at": 1775332461000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1775678061000,
+    "stability": 3.746932446187409,
+    "difficulty": 8.807881435285108
+   },
+   {
+    "at": 1775510001000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1775855601000,
+    "stability": 4.205094206783796,
+    "difficulty": 8.974749164675108
+   }
+  ],
+  [
+   {
+    "at": 1767604740000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605070000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767605730000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605790000,
+    "stability": 0.5931426183664849,
+    "difficulty": 7.607711323234045
+   },
+   {
+    "at": 1767605760000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606090000,
+    "stability": 0.4981457118128132,
+    "difficulty": 7.973951599678796
+   },
+   {
+    "at": 1767606090000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606150000,
+    "stability": 0.2495852108228985,
+    "difficulty": 8.606599777374374
+   },
+   {
+    "at": 1767606192000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606522000,
+    "stability": 0.20961198648265772,
+    "difficulty": 8.806904464084104
+   },
+   {
+    "at": 1767607182000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767693582000,
+    "stability": 0.49463291085978306,
+    "difficulty": 8.58851633355636
+   },
+   {
+    "at": 1767693582000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1767779982000,
+    "stability": 0.7721365005199988,
+    "difficulty": 8.791825046293164
+   },
+   {
+    "at": 1767952782000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768211982000,
+    "stability": 3.4597567322145495,
+    "difficulty": 8.766215358391323
+   }
+  ],
+  [
+   {
+    "at": 1767604800000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605400000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767605820000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606420000,
+    "stability": 2.664816680910697,
+    "difficulty": 6.0349502556102195
+   },
+   {
+    "at": 1767606120000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767951720000,
+    "stability": 3.751452215938514,
+    "difficulty": 6.022022191745521
+   },
+   {
+    "at": 1767953760000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768472160000,
+    "stability": 5.720457879603926,
+    "difficulty": 6.651677527278537
+   },
+   {
+    "at": 1768472700000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769855100000,
+    "stability": 16.336664981823375,
+    "difficulty": 6.635912517964163
+   },
+   {
+    "at": 1769863020000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1773491820000,
+    "stability": 41.5841918851275,
+    "difficulty": 6.620220027692636
+   },
+   {
+    "at": 1773517020000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1782243420000,
+    "stability": 100.9041044375073,
+    "difficulty": 6.604599722876358
+   },
+   {
+    "at": 1777914360000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1787936760000,
+    "stability": 116.47799545872317,
+    "difficulty": 7.137477139119313
+   },
+   {
+    "at": 1782936420000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1782937020000,
+    "stability": 5.472288721550921,
+    "difficulty": 8.04418821058034
+   }
+  ],
+  [
+   {
+    "at": 1767604860000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605190000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767605190000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605790000,
+    "stability": 1.6665899525670382,
+    "difficulty": 6.473291771547592
+   },
+   {
+    "at": 1767606990000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607050000,
+    "stability": 0.8350091043703921,
+    "difficulty": 7.597616855648797
+   },
+   {
+    "at": 1767607170000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607770000,
+    "stability": 1.1755017811764132,
+    "difficulty": 7.57750052542392
+   },
+   {
+    "at": 1767607470000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767866670000,
+    "stability": 2.7738960805671993,
+    "difficulty": 7.166194033784676
+   },
+   {
+    "at": 1767891810000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768583010000,
+    "stability": 7.8590241229898465,
+    "difficulty": 7.148062248540375
+   },
+   {
+    "at": 1769983050000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769983650000,
+    "stability": 2.42614227444213,
+    "difficulty": 8.051305209669835
+   },
+   {
+    "at": 1769983650000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770242850000,
+    "stability": 3.4154532568174982,
+    "difficulty": 8.029101913016461
+   },
+   {
+    "at": 1770774510000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1771897710000,
+    "stability": 13.431035560052777,
+    "difficulty": 8.007000751527693
+   },
+   {
+    "at": 1771365450000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1772661450000,
+    "stability": 15.05799407024916,
+    "difficulty": 8.306910972314839
+   },
+   {
+    "at": 1775288910000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1779781710000,
+    "stability": 52.01585379714132,
+    "difficulty": 8.283531889153299
+   },
+   {
+    "at": 1788795930000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1802879130000,
+    "stability": 163.40168338752653,
+    "difficulty": 8.2602603497743
+   },
+   {
+    "at": 1795846110000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1815545310000,
+    "stability": 227.53870980823265,
+    "difficulty": 8.237095859476446
+   },
+   {
+    "at": 1854950430000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1910592030000,
+    "stability": 643.9115696176832,
+    "difficulty": 8.214037925833962
+   }
+  ],
+  [
+   {
+    "at": 1767604920000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768987320000,
+    "stability": 15.69105,
+    "difficulty": 3.2245015893713678
+   },
+   {
+    "at": 1771766520000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1782825720000,
+    "stability": 128.31669105903296,
+    "difficulty": 3.2245015893713673
+   },
+   {
+    "at": 1790568780000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1840162380000,
+    "stability": 573.83779065597,
+    "difficulty": 3.224501589371367
+   },
+   {
+    "at": 1815386280000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1912931880000,
+    "stability": 1128.833465020434,
+    "difficulty": 3.2245015893713664
+   },
+   {
+    "at": 1912958580000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2175700980000,
+    "stability": 3040.6858991029626,
+    "difficulty": 3.224501589371366
+   },
+   {
+    "at": 2175716880000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 2529956880000,
+    "stability": 4100.02023001061,
+    "difficulty": 4.318881718775722
+   },
+   {
+    "at": 2529978480000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 3326240880000,
+    "stability": 9215.67541311239,
+    "difficulty": 4.313847570180462
+   },
+   {
+    "at": 4918767540000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 6239305140000,
+    "stability": 15283.710444805634,
+    "difficulty": 5.227265283809775
+   },
+   {
+    "at": 6239336160000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 7841537760000,
+    "stability": 18544.48553475479,
+    "difficulty": 5.988945827630735
+   },
+   {
+    "at": 11045945340000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 14199545340000,
+    "stability": 54912.34052453776,
+    "difficulty": 5.976229384134742
+   },
+   {
+    "at": 20506768980000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 23660368980000,
+    "stability": 123545.43785673188,
+    "difficulty": 5.96357143627883
+   },
+   {
+    "at": 29967601920000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 33121201920000,
+    "stability": 192969.84330592788,
+    "difficulty": 5.950971714983056
+   },
+   {
+    "at": 31544415540000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 34698015540000,
+    "stability": 204951.9742720951,
+    "difficulty": 5.938429952405242
+   },
+   {
+    "at": 41005232700000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 44158832700000,
+    "stability": 273104.66937541345,
+    "difficulty": 5.925945881935286
+   }
+  ],
+  [
+   {
+    "at": 1767604980000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605040000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767605160000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767691560000,
+    "stability": 0.9499193324188999,
+    "difficulty": 6.723555742087108
+   },
+   {
+    "at": 1767864360000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768382760000,
+    "stability": 6.315954308840147,
+    "difficulty": 6.707460092984616
+   },
+   {
+    "at": 1768770540000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770757740000,
+    "stability": 22.70828119862205,
+    "difficulty": 6.691438483867994
+   }
+  ],
+  [
+   {
+    "at": 1767605040000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768987440000,
+    "stability": 15.69105,
+    "difficulty": 3.2245015893713678
+   },
+   {
+    "at": 1768297320000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1770111720000,
+    "stability": 21.185452930520654,
+    "difficulty": 4.318881718775723
+   },
+   {
+    "at": 1770142440000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1776190440000,
+    "stability": 70.31014964281626,
+    "difficulty": 4.313847570180463
+   },
+   {
+    "at": 1776218400000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1818986400000,
+    "stability": 494.7898940459414,
+    "difficulty": 3.390407873527706
+   },
+   {
+    "at": 1848928560000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 2263043760000,
+    "stability": 4792.808874333138,
+    "difficulty": 2.322061798050671
+   }
+  ],
+  [
+   {
+    "at": 1767605100000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605700000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767605700000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767951300000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1767958020000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1770895620000,
+    "stability": 33.618681853613246,
+    "difficulty": 4.500033631888484
+   },
+   {
+    "at": 1772955420000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1778139420000,
+    "stability": 60.1758383650711,
+    "difficulty": 5.382522072262206
+   },
+   {
+    "at": 1778171520000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1792341120000,
+    "stability": 164.31772165508522,
+    "difficulty": 5.372595178040908
+   },
+   {
+    "at": 1820713560000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1820714160000,
+    "stability": 9.687165737972487,
+    "difficulty": 6.857553022373008
+   },
+   {
+    "at": 1820713860000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1820714760000,
+    "stability": 8.135682587234687,
+    "difficulty": 7.348409775794787
+   },
+   {
+    "at": 1820714760000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1821665160000,
+    "stability": 11.453179758550437,
+    "difficulty": 7.329439798137239
+   }
+  ],
+  [
+   {
+    "at": 1767605160000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605490000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767605490000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605820000,
+    "stability": 0.9942462110608663,
+    "difficulty": 7.040501547390819
+   },
+   {
+    "at": 1767605820000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606150000,
+    "stability": 0.835009104370392,
+    "difficulty": 7.500966847928992
+   },
+   {
+    "at": 1767605985000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606585000,
+    "stability": 1.175501781176413,
+    "difficulty": 7.481295107739626
+   },
+   {
+    "at": 1767606585000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767779385000,
+    "stability": 1.6548375704128624,
+    "difficulty": 7.461713857555132
+   },
+   {
+    "at": 1767904785000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768163985000,
+    "stability": 2.7326234020771767,
+    "difficulty": 7.852207268037856
+   },
+   {
+    "at": 1768684965000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1769116965000,
+    "stability": 5.12571083416969,
+    "difficulty": 8.17783181945277
+   },
+   {
+    "at": 1768924845000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769616045000,
+    "stability": 7.618740779357188,
+    "difficulty": 8.155046500394395
+   },
+   {
+    "at": 1770125745000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1770126345000,
+    "stability": 1.9523085827314086,
+    "difficulty": 8.728360657893962
+   },
+   {
+    "at": 1770126765000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1770127365000,
+    "stability": 0.9781622879762375,
+    "difficulty": 9.113833889639576
+   },
+   {
+    "at": 1770128565000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1770129465000,
+    "stability": 0.8215011603015602,
+    "difficulty": 9.229876723883624
+   }
+  ],
+  [
+   {
+    "at": 1767605220000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605820000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767605520000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767951120000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1768223400000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1768224000000,
+    "stability": 1.466709783742088,
+    "difficulty": 6.790567694566929
+   },
+   {
+    "at": 1768224000000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768396800000,
+    "stability": 2.0647918139260355,
+    "difficulty": 6.774163790483029
+   },
+   {
+    "at": 1768553640000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768812840000,
+    "stability": 3.361155526223417,
+    "difficulty": 7.278873183119787
+   },
+   {
+    "at": 1768813440000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1770368640000,
+    "stability": 18.061407451268114,
+    "difficulty": 6.820706017255616
+   },
+   {
+    "at": 1769599080000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1772363880000,
+    "stability": 32.19179316827769,
+    "difficulty": 6.804163476887348
+   },
+   {
+    "at": 1772376840000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1779029640000,
+    "stability": 76.90317170993038,
+    "difficulty": 6.7876970322047745
+   }
+  ],
+  [
+   {
+    "at": 1767605280000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605340000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767605340000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605400000,
+    "stability": 0.20168903241409677,
+    "difficulty": 8.082797017759107
+   },
+   {
+    "at": 1767605520000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606120000,
+    "stability": 0.28393201416083236,
+    "difficulty": 8.060448858788522
+   },
+   {
+    "at": 1767607320000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607920000,
+    "stability": 0.23845785300357966,
+    "difficulty": 8.351480267169954
+   },
+   {
+    "at": 1767607920000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607980000,
+    "stability": 0.11947418617273606,
+    "difficulty": 8.86043477103497
+   },
+   {
+    "at": 1767608100000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767608430000,
+    "stability": 0.10033936471835397,
+    "difficulty": 9.018572327677404
+   },
+   {
+    "at": 1767608661000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767608991000,
+    "stability": 0.08426914996957198,
+    "difficulty": 9.150440035457382
+   },
+   {
+    "at": 1767609651000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767610251000,
+    "stability": 0.11863168361756438,
+    "difficulty": 9.123180718605386
+   },
+   {
+    "at": 1767610251000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767696651000,
+    "stability": 0.16700626935265828,
+    "difficulty": 9.096046794610908
+   },
+   {
+    "at": 1767696651000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767783051000,
+    "stability": 0.972313919220528,
+    "difficulty": 9.069037686666805
+   },
+   {
+    "at": 1767783051000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767955851000,
+    "stability": 1.944829563005756,
+    "difficulty": 9.042152820619245
+   },
+   {
+    "at": 1768328991000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768847391000,
+    "stability": 6.482034170037517,
+    "difficulty": 9.015391624955504
+   },
+   {
+    "at": 1768619871000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1769829471000,
+    "stability": 14.067146141625406,
+    "difficulty": 8.829719349748618
+   }
+  ],
+  [
+   {
+    "at": 1767605340000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767605940000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767607140000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952740000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1767981480000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769191080000,
+    "stability": 14.217284109332127,
+    "difficulty": 5.263544986114632
+   },
+   {
+    "at": 1769208120000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769208720000,
+    "stability": 2.504170139105898,
+    "difficulty": 6.784232087673549
+   },
+   {
+    "at": 1769208420000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769209020000,
+    "stability": 1.2546606691256805,
+    "difficulty": 7.8066805373478925
+   },
+   {
+    "at": 1769208720000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1769467920000,
+    "stability": 2.9606916537774604,
+    "difficulty": 7.431337028182961
+   },
+   {
+    "at": 1769472540000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1769818140000,
+    "stability": 4.055453832266901,
+    "difficulty": 7.826876644851429
+   },
+   {
+    "at": 1770540840000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1772096040000,
+    "stability": 17.66514500010372,
+    "difficulty": 7.8057057195962205
+   },
+   {
+    "at": 1772108040000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1774008840000,
+    "stability": 22.414409096218257,
+    "difficulty": 8.13905511939863
+   },
+   {
+    "at": 1773094380000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1776031980000,
+    "stability": 33.94592232458599,
+    "difficulty": 8.116448173160505
+   },
+   {
+    "at": 1776055080000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1781757480000,
+    "stability": 66.363403202293,
+    "difficulty": 8.093945218875074
+   },
+   {
+    "at": 1793187180000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1811590380000,
+    "stability": 213.45837489111472,
+    "difficulty": 8.071545778179356
+   },
+   {
+    "at": 1802416200000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1828336200000,
+    "stability": 300.3512060292003,
+    "difficulty": 8.049249374910838
+   },
+   {
+    "at": 1815391080000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1851592680000,
+    "stability": 419.2702687834114,
+    "difficulty": 8.027055535097356
+   }
+  ],
+  [
+   {
+    "at": 1767605400000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605460000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767605502000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606102000,
+    "stability": 0.5666983024925972,
+    "difficulty": 7.176636167311107
+   },
+   {
+    "at": 1767607302000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767693702000,
+    "stability": 0.7977815576897062,
+    "difficulty": 7.158456348252584
+   },
+   {
+    "at": 1767754182000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768013382000,
+    "stability": 2.735143264167272,
+    "difficulty": 7.140360156361731
+   }
+  ],
+  [
+   {
+    "at": 1767605460000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606060000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606060000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606120000,
+    "stability": 1.589763507266002,
+    "difficulty": 6.796932579932991
+   },
+   {
+    "at": 1767606162000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767951762000,
+    "stability": 3.7514522159385155,
+    "difficulty": 6.263139178951004
+   },
+   {
+    "at": 1767958002000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1770377202000,
+    "stability": 27.949246249123398,
+    "difficulty": 5.645582789376507
+   },
+   {
+    "at": 1770411702000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1785963702000,
+    "stability": 179.63255223324498,
+    "difficulty": 4.931119302936446
+   },
+   {
+    "at": 1817085342000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1817085942000,
+    "stability": 10.126794349651664,
+    "difficulty": 6.560722514896192
+   },
+   {
+    "at": 1817087142000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1818296742000,
+    "stability": 14.256209583006392,
+    "difficulty": 6.545375898638778
+   },
+   {
+    "at": 1817696142000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1819942542000,
+    "stability": 26.315081447996945,
+    "difficulty": 6.530099876816148
+   }
+  ],
+  [
+   {
+    "at": 1767605520000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606120000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606120000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606180000,
+    "stability": 1.589763507266002,
+    "difficulty": 6.796932579932991
+   },
+   {
+    "at": 1767606222000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606552000,
+    "stability": 1.3351491688829296,
+    "difficulty": 7.297859615801812
+   },
+   {
+    "at": 1767607212000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607272000,
+    "stability": 0.6689478176636033,
+    "difficulty": 8.152022895618998
+   },
+   {
+    "at": 1767607242000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607572000,
+    "stability": 0.5618100545757256,
+    "difficulty": 8.427842003024383
+   },
+   {
+    "at": 1767607572000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608172000,
+    "stability": 0.7909000229818336,
+    "difficulty": 8.403906637121578
+   },
+   {
+    "at": 1767609372000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767695772000,
+    "stability": 1.1134062860890852,
+    "difficulty": 8.380081373901925
+   },
+   {
+    "at": 1767652572000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767825372000,
+    "stability": 1.5674213198640459,
+    "difficulty": 8.356365706893083
+   },
+   {
+    "at": 1767748932000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768008132000,
+    "stability": 2.87681153584428,
+    "difficulty": 8.332759131952482
+   },
+   {
+    "at": 1768532112000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1771037712000,
+    "stability": 29.24314442496321,
+    "difficulty": 8.039968002111763
+   },
+   {
+    "at": 1771049052000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1776060252000,
+    "stability": 58.16460585400577,
+    "difficulty": 8.017816856613157
+   },
+   {
+    "at": 1776073032000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1785749832000,
+    "stability": 111.8246309494924,
+    "difficulty": 7.995767606383844
+   }
+  ],
+  [
+   {
+    "at": 1767605580000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605910000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767605745000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605805000,
+    "stability": 0.5931426183664849,
+    "difficulty": 7.607711323234045
+   },
+   {
+    "at": 1767605925000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767605985000,
+    "stability": 0.2971813707164332,
+    "difficulty": 8.360354640899315
+   },
+   {
+    "at": 1767605985000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606585000,
+    "stability": 0.4183633792508407,
+    "difficulty": 8.336729716862285
+   },
+   {
+    "at": 1767607785000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608385000,
+    "stability": 0.3513588754206771,
+    "difficulty": 8.581865282793098
+   },
+   {
+    "at": 1767608805000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767609405000,
+    "stability": 0.2950857208342401,
+    "difficulty": 8.786278869678947
+   },
+   {
+    "at": 1767609105000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767609165000,
+    "stability": 0.1478463632201569,
+    "difficulty": 9.152775750714587
+   },
+   {
+    "at": 1767609207000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767609807000,
+    "stability": 0.208133854344968,
+    "difficulty": 9.125505689572407
+   },
+   {
+    "at": 1767611007000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767611607000,
+    "stability": 0.1747994222882786,
+    "difficulty": 9.23960960161038
+   },
+   {
+    "at": 1767611607000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767698007000,
+    "stability": 0.24607759505019042,
+    "difficulty": 9.21194010475408
+   },
+   {
+    "at": 1767698007000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767957207000,
+    "stability": 2.699666934226481,
+    "difficulty": 9.057110264168822
+   },
+   {
+    "at": 1767975807000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768235007000,
+    "stability": 3.2964151068758394,
+    "difficulty": 9.18257604068974
+   },
+   {
+    "at": 1768249827000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768768227000,
+    "stability": 5.699087789109259,
+    "difficulty": 9.155168898213676
+   },
+   {
+    "at": 1768771107000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1768771707000,
+    "stability": 1.4570076829604628,
+    "difficulty": 9.400802473232984
+   }
+  ],
+  [
+   {
+    "at": 1767605640000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606240000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606660000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768211460000,
+    "stability": 7.487502277394533,
+    "difficulty": 4.510985606964673
+   },
+   {
+    "at": 1769422680000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769423280000,
+    "stability": 2.4104628276521636,
+    "difficulty": 6.2782416247367845
+   },
+   {
+    "at": 1769423700000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769424300000,
+    "stability": 1.2077106331618745,
+    "difficulty": 7.466473032563153
+   },
+   {
+    "at": 1769424300000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769597100000,
+    "stability": 1.7001802650977371,
+    "difficulty": 7.446959963924471
+   },
+   {
+    "at": 1769525220000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769525820000,
+    "stability": 0.6128202278619901,
+    "difficulty": 8.252271934114582
+   },
+   {
+    "at": 1769525820000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769526720000,
+    "stability": 0.5146717824160496,
+    "difficulty": 8.511437647185309
+   },
+   {
+    "at": 1769526720000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769527320000,
+    "stability": 0.25786524358795576,
+    "difficulty": 8.96798363828255
+   },
+   {
+    "at": 1769527320000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769527920000,
+    "stability": 0.129197842435673,
+    "difficulty": 9.274946681714617
+   },
+   {
+    "at": 1769527920000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769528820000,
+    "stability": 0.1085056935582267,
+    "difficulty": 9.364225420272088
+   },
+   {
+    "at": 1769528370000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769528970000,
+    "stability": 0.054364447510071384,
+    "difficulty": 9.541363616057048
+   },
+   {
+    "at": 1769528970000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769615370000,
+    "stability": 0.0765327043097885,
+    "difficulty": 9.512306050734292
+   }
+  ],
+  [
+   {
+    "at": 1767605700000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606300000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606000000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767951600000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1767969420000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1770907020000,
+    "stability": 33.618681853613246,
+    "difficulty": 4.500033631888484
+   }
+  ],
+  [
+   {
+    "at": 1767605760000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606090000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767606750000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607080000,
+    "stability": 0.9942462110608663,
+    "difficulty": 7.040501547390819
+   },
+   {
+    "at": 1767606915000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607245000,
+    "stability": 0.835009104370392,
+    "difficulty": 7.500966847928992
+   },
+   {
+    "at": 1767607080000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607680000,
+    "stability": 1.175501781176413,
+    "difficulty": 7.481295107739626
+   },
+   {
+    "at": 1767608100000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767780900000,
+    "stability": 1.6548375704128624,
+    "difficulty": 7.461713857555132
+   },
+   {
+    "at": 1767783480000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768215480000,
+    "stability": 4.940795994161482,
+    "difficulty": 7.442222681121486
+   }
+  ],
+  [
+   {
+    "at": 1767605820000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606420000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606120000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606720000,
+    "stability": 2.664816680910697,
+    "difficulty": 6.0349502556102195
+   },
+   {
+    "at": 1767607920000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608520000,
+    "stability": 2.238023303769273,
+    "difficulty": 6.662457978071298
+   }
+  ],
+  [
+   {
+    "at": 1767605880000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606480000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606180000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767951780000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1768201980000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769757180000,
+    "stability": 18.457383350535977,
+    "difficulty": 5.263544986114632
+   },
+   {
+    "at": 1770876600000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1777443000000,
+    "stability": 76.06390261219524,
+    "difficulty": 5.254165386489613
+   },
+   {
+    "at": 1790604480000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1825596480000,
+    "stability": 405.1968142104078,
+    "difficulty": 5.244828933022869
+   },
+   {
+    "at": 1895606640000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2054928240000,
+    "stability": 1844.2726157964184,
+    "difficulty": 5.2355354272420715
+   }
+  ],
+  [
+   {
+    "at": 1767605940000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606540000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606540000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768211340000,
+    "stability": 7.487502277394533,
+    "difficulty": 4.510985606964673
+   },
+   {
+    "at": 1769451660000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1774030860000,
+    "stability": 53.328448651095805,
+    "difficulty": 4.505067780483744
+   },
+   {
+    "at": 1771769220000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1771769820000,
+    "stability": 4.192498163044989,
+    "difficulty": 6.274262717764623
+   },
+   {
+    "at": 1771770240000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1772288640000,
+    "stability": 5.9020782317747535,
+    "difficulty": 6.260233816574014
+   },
+   {
+    "at": 1772303640000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1773081240000,
+    "stability": 8.579660338386502,
+    "difficulty": 6.850317379819732
+   },
+   {
+    "at": 1773106440000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1775093640000,
+    "stability": 23.059522983398058,
+    "difficulty": 6.833638627183669
+   },
+   {
+    "at": 1779068640000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1782697440000,
+    "stability": 42.34393439684796,
+    "difficulty": 7.328468045673755
+   },
+   {
+    "at": 1782728040000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1782728640000,
+    "stability": 4.005421983786974,
+    "difficulty": 8.172602764835652
+   },
+   {
+    "at": 1782728340000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1782728940000,
+    "stability": 2.006830665309022,
+    "difficulty": 8.74016477942668
+   },
+   {
+    "at": 1782728940000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1782729840000,
+    "stability": 1.685419424102929,
+    "difficulty": 8.918281615939879
+   },
+   {
+    "at": 1782731640000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1782904440000,
+    "stability": 2.3726849500116276,
+    "difficulty": 8.892090227817663
+   },
+   {
+    "at": 1783042080000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1783474080000,
+    "stability": 5.170330306723851,
+    "difficulty": 8.86601932008081
+   }
+  ],
+  [
+   {
+    "at": 1767606000000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606330000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767606165000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606765000,
+    "stability": 1.6665899525670382,
+    "difficulty": 6.473291771547592
+   },
+   {
+    "at": 1767607185000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767779985000,
+    "stability": 2.3461773619946804,
+    "difficulty": 6.458347336709581
+   },
+   {
+    "at": 1767721785000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768153785000,
+    "stability": 4.539356562439021,
+    "difficulty": 6.443471646271825
+   },
+   {
+    "at": 1768156365000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769365965000,
+    "stability": 14.019055730800863,
+    "difficulty": 6.428664384010083
+   },
+   {
+    "at": 1768795605000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1768796205000,
+    "stability": 2.1972572171489717,
+    "difficulty": 7.567611206785224
+   },
+   {
+    "at": 1768796205000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769055405000,
+    "stability": 3.0932354616766373,
+    "difficulty": 7.54763290254512
+   },
+   {
+    "at": 1769257785000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770121785000,
+    "stability": 10.248492510334904,
+    "difficulty": 7.52774649850452
+   }
+  ],
+  [
+   {
+    "at": 1767606060000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606660000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606660000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952260000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1768672380000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1771177980000,
+    "stability": 29.2934783592435,
+    "difficulty": 5.263544986114632
+   },
+   {
+    "at": 1769931240000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769931840000,
+    "stability": 3.1707798565493897,
+    "difficulty": 6.784232087673549
+   },
+   {
+    "at": 1769932260000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769933160000,
+    "stability": 2.6629521125838136,
+    "difficulty": 7.2872689323646265
+   },
+   {
+    "at": 1769934960000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769935860000,
+    "stability": 2.236457362142996,
+    "difficulty": 7.706741175686779
+   },
+   {
+    "at": 1769935860000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769936760000,
+    "stability": 1.8782694247665275,
+    "difficulty": 8.056530589274917
+   },
+   {
+    "at": 1769936760000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770195960000,
+    "stability": 2.644173629707957,
+    "difficulty": 8.03430325587536
+   },
+   {
+    "at": 1770223620000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770828420000,
+    "stability": 6.5795871140042586,
+    "difficulty": 8.01217816820944
+   },
+   {
+    "at": 1771270620000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1772998620000,
+    "stability": 19.9061142385758,
+    "difficulty": 7.990154855946784
+   },
+   {
+    "at": 1772141940000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1776721140000,
+    "stability": 53.30795675181936,
+    "difficulty": 7.643602180890227
+   }
+  ],
+  [
+   {
+    "at": 1767606120000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606720000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606720000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952320000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1768216320000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769944320000,
+    "stability": 20.44566468325858,
+    "difficulty": 5.263544986114632
+   },
+   {
+    "at": 1773402900000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1773403500000,
+    "stability": 4.02911748804535,
+    "difficulty": 6.784232087673549
+   },
+   {
+    "at": 1773403500000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1774267500000,
+    "stability": 9.507729709306554,
+    "difficulty": 6.248445722398091
+   },
+   {
+    "at": 1773842280000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1773842880000,
+    "stability": 1.8139398330274212,
+    "difficulty": 7.446439473968741
+   },
+   {
+    "at": 1773842880000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1774188480000,
+    "stability": 4.280453397683415,
+    "difficulty": 7.014566850680498
+   },
+   {
+    "at": 1774211640000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1774730040000,
+    "stability": 5.852996506481044,
+    "difficulty": 7.4793404292605175
+   },
+   {
+    "at": 1774487040000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1775351040000,
+    "stability": 10.384266473303866,
+    "difficulty": 7.459768170597028
+   },
+   {
+    "at": 1774927560000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1774928160000,
+    "stability": 1.845517690841684,
+    "difficulty": 8.260883653805003
+   },
+   {
+    "at": 1774928580000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1775187780000,
+    "stability": 2.5980666814558195,
+    "difficulty": 8.237716296308607
+   },
+   {
+    "at": 1775085120000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1775344320000,
+    "stability": 2.9045183325601087,
+    "difficulty": 8.499299995425016
+   },
+   {
+    "at": 1775543820000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1777099020000,
+    "stability": 18.365941218417326,
+    "difficulty": 8.232642497850216
+   },
+   {
+    "at": 1777126140000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1779026940000,
+    "stability": 22.477466284698103,
+    "difficulty": 8.495069057584246
+   }
+  ],
+  [
+   {
+    "at": 1767606180000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606780000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606780000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952380000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1767956220000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1767956820000,
+    "stability": 1.2976302777410647,
+    "difficulty": 6.790567694566929
+   },
+   {
+    "at": 1767958020000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768130820000,
+    "stability": 1.8267665523757515,
+    "difficulty": 6.774163790483029
+   },
+   {
+    "at": 1768278300000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768883100000,
+    "stability": 7.408822951987471,
+    "difficulty": 6.7578353443579156
+   },
+   {
+    "at": 1768906320000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770547920000,
+    "stability": 19.248649563512583,
+    "difficulty": 6.741582009084977
+   },
+   {
+    "at": 1771714560000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1774306560000,
+    "stability": 29.719641342668275,
+    "difficulty": 7.251703895067206
+   },
+   {
+    "at": 1774342260000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1777625460000,
+    "stability": 38.45778586739423,
+    "difficulty": 7.677084210920815
+   },
+   {
+    "at": 1775995980000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1775996580000,
+    "stability": 3.4438197701402493,
+    "difficulty": 8.406998162365404
+   }
+  ],
+  [
+   {
+    "at": 1767606240000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606300000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767606300000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606900000,
+    "stability": 0.5666983024925972,
+    "difficulty": 7.176636167311107
+   },
+   {
+    "at": 1767606900000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767693300000,
+    "stability": 0.7977815576897062,
+    "difficulty": 7.158456348252584
+   },
+   {
+    "at": 1767693300000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952500000,
+    "stability": 2.735143264167272,
+    "difficulty": 7.140360156361731
+   },
+   {
+    "at": 1767838680000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768529880000,
+    "stability": 8.243089634085763,
+    "difficulty": 6.660457493095559
+   },
+   {
+    "at": 1769943840000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1773659040000,
+    "stability": 42.58089381763537,
+    "difficulty": 6.644652095938428
+   }
+  ],
+  [
+   {
+    "at": 1767606300000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606630000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767606630000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607230000,
+    "stability": 1.6665899525670382,
+    "difficulty": 6.473291771547592
+   },
+   {
+    "at": 1767608430000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767781230000,
+    "stability": 2.3461773619946804,
+    "difficulty": 6.458347336709581
+   },
+   {
+    "at": 1767719610000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768151610000,
+    "stability": 4.539356562439021,
+    "difficulty": 6.443471646271825
+   },
+   {
+    "at": 1767970350000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1767970950000,
+    "stability": 1.1628270574126345,
+    "difficulty": 7.577567010532042
+   },
+   {
+    "at": 1767972150000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1767972750000,
+    "stability": 0.5826095244677322,
+    "difficulty": 8.340086825280267
+   },
+   {
+    "at": 1767972750000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768059150000,
+    "stability": 0.8201809179776005,
+    "difficulty": 8.316555133195084
+   },
+   {
+    "at": 1768015950000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1768016550000,
+    "stability": 0.41093403490599406,
+    "difficulty": 8.83695252471969
+   }
+  ],
+  [
+   {
+    "at": 1767606360000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767606960000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767607380000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952980000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1767794640000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768313040000,
+    "stability": 5.649956028206211,
+    "difficulty": 6.0270563403407795
+   },
+   {
+    "at": 1768326120000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769881320000,
+    "stability": 17.793207819178484,
+    "difficulty": 6.01416458848632
+   },
+   {
+    "at": 1769908020000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1772068020000,
+    "stability": 25.205208313219543,
+    "difficulty": 6.6451252309585795
+   },
+   {
+    "at": 1773589140000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1780846740000,
+    "stability": 83.97455139572598,
+    "difficulty": 6.629390362207278
+   },
+   {
+    "at": 1780856700000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1816280700000,
+    "stability": 409.8141844112465,
+    "difficulty": 6.06930619620964
+   }
+  ],
+  [
+   {
+    "at": 1767606420000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606480000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767606600000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767693000000,
+    "stability": 0.9499193324188999,
+    "difficulty": 6.723555742087108
+   },
+   {
+    "at": 1767649800000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767736200000,
+    "stability": 1.337269092502029,
+    "difficulty": 6.707460092984616
+   },
+   {
+    "at": 1767796680000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1767797280000,
+    "stability": 0.5361383449055533,
+    "difficulty": 7.7550621558494
+   },
+   {
+    "at": 1767798480000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767884880000,
+    "stability": 0.7547601290750656,
+    "difficulty": 7.7342215772436
+   },
+   {
+    "at": 1767884880000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768057680000,
+    "stability": 2.4012226406210595,
+    "difficulty": 7.713476865299388
+   }
+  ],
+  [
+   {
+    "at": 1767606480000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607080000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767606780000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606840000,
+    "stability": 1.589763507266002,
+    "difficulty": 6.796932579932991
+   },
+   {
+    "at": 1767606840000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607440000,
+    "stability": 2.2380233037692734,
+    "difficulty": 6.780499397376408
+   },
+   {
+    "at": 1767607860000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607920000,
+    "stability": 1.1213135129981988,
+    "difficulty": 7.804170827491399
+   },
+   {
+    "at": 1767607920000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608520000,
+    "stability": 1.578552886295094,
+    "difficulty": 7.783104348996047
+   },
+   {
+    "at": 1767608520000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767781320000,
+    "stability": 2.2222413142670963,
+    "difficulty": 7.762134776301774
+   },
+   {
+    "at": 1767809160000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768068360000,
+    "stability": 2.915374432196507,
+    "difficulty": 8.102722191661284
+   },
+   {
+    "at": 1768251780000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769029380000,
+    "stability": 8.907747795474389,
+    "difficulty": 8.08028237689075
+   },
+   {
+    "at": 1770592860000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1773530460000,
+    "stability": 34.414116056235976,
+    "difficulty": 8.05794578526816
+   },
+   {
+    "at": 1775591340000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1783021740000,
+    "stability": 86.38179881615471,
+    "difficulty": 8.035711941967033
+   },
+   {
+    "at": 1779328620000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1779329220000,
+    "stability": 4.801938699093556,
+    "difficulty": 8.64812493147033
+   },
+   {
+    "at": 1779329220000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1779934020000,
+    "stability": 6.760031075518144,
+    "difficulty": 8.623176264096672
+   }
+  ],
+  [
+   {
+    "at": 1767606540000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607140000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767607560000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607620000,
+    "stability": 1.589763507266002,
+    "difficulty": 6.796932579932991
+   },
+   {
+    "at": 1767607620000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608220000,
+    "stability": 2.2380233037692734,
+    "difficulty": 6.780499397376408
+   },
+   {
+    "at": 1767609420000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767868620000,
+    "stability": 3.150624784958195,
+    "difficulty": 6.764141807459585
+   },
+   {
+    "at": 1767875520000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1767876120000,
+    "stability": 1.0238555554631306,
+    "difficulty": 7.793172646186567
+   },
+   {
+    "at": 1767876540000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1767877440000,
+    "stability": 0.859876256867708,
+    "difficulty": 8.128604043151727
+   },
+   {
+    "at": 1767879240000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767965640000,
+    "stability": 1.2105090426546232,
+    "difficulty": 8.106045171864336
+   },
+   {
+    "at": 1768026120000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768544520000,
+    "stability": 5.544114214405274,
+    "difficulty": 7.7776780329952375
+   },
+   {
+    "at": 1768294860000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769158860000,
+    "stability": 9.705511907732573,
+    "difficulty": 7.756733421354568
+   }
+  ],
+  [
+   {
+    "at": 1767606600000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607200000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767607200000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607260000,
+    "stability": 1.589763507266002,
+    "difficulty": 6.796932579932991
+   },
+   {
+    "at": 1767607260000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607860000,
+    "stability": 2.2380233037692734,
+    "difficulty": 6.780499397376408
+   },
+   {
+    "at": 1767607860000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608460000,
+    "stability": 1.8795845673341403,
+    "difficulty": 7.2841563174754915
+   },
+   {
+    "at": 1767608460000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767867660000,
+    "stability": 2.6460250495579185,
+    "difficulty": 7.2654819057262126
+   },
+   {
+    "at": 1767903300000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1769372100000,
+    "stability": 17.46227204927832,
+    "difficulty": 6.805213377399535
+   },
+   {
+    "at": 1772320920000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1779405720000,
+    "stability": 81.91186357629918,
+    "difficulty": 6.788742103174605
+   }
+  ],
+  [
+   {
+    "at": 1767606660000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767606720000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767606720000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607320000,
+    "stability": 0.5666983024925972,
+    "difficulty": 7.176636167311107
+   },
+   {
+    "at": 1767607320000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767693720000,
+    "stability": 1.337269092502029,
+    "difficulty": 6.702425944389355
+   },
+   {
+    "at": 1767693720000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767952920000,
+    "stability": 3.481674385085939,
+    "difficulty": 6.686427492356272
+   },
+   {
+    "at": 1767829920000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768261920000,
+    "stability": 5.49962066723658,
+    "difficulty": 6.670502633202542
+   },
+   {
+    "at": 1768588200000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770229800000,
+    "stability": 19.11043956485124,
+    "difficulty": 6.654651028400918
+   },
+   {
+    "at": 1771406040000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1784970840000,
+    "stability": 157.0678730260873,
+    "difficulty": 6.0985307722049455
+   },
+   {
+    "at": 1784986080000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1816867680000,
+    "stability": 369.0910497974158,
+    "difficulty": 6.0853102379639115
+   },
+   {
+    "at": 1839191400000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 2056228200000,
+    "stability": 2512.4012736886707,
+    "difficulty": 5.439848888290774
+   },
+   {
+    "at": 2208181740000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 2513173740000,
+    "stability": 3529.643369031075,
+    "difficulty": 6.166214992715286
+   },
+   {
+    "at": 2513174400000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 3098448000000,
+    "stability": 6773.63873133797,
+    "difficulty": 6.152683111059904
+   },
+   {
+    "at": 3508147260000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 4886400060000,
+    "stability": 15951.99025570148,
+    "difficulty": 6.139213476060137
+   },
+   {
+    "at": 5851196340000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 9004796340000,
+    "stability": 74466.55663631213,
+    "difficulty": 5.502210635445836
+   }
+  ],
+  [
+   {
+    "at": 1767606720000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607320000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767607740000,
+    "rating": 2,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608340000,
+    "stability": 2.664816680910697,
+    "difficulty": 6.0349502556102195
+   },
+   {
+    "at": 1767608040000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767953640000,
+    "stability": 3.751452215938514,
+    "difficulty": 6.022022191745521
+   },
+   {
+    "at": 1767956880000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1767957480000,
+    "stability": 1.186087186060561,
+    "difficulty": 7.294201457582474
+   },
+   {
+    "at": 1767957480000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768130280000,
+    "stability": 1.6697393987051081,
+    "difficulty": 7.275480838188703
+   },
+   {
+    "at": 1768285380000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768890180000,
+    "stability": 6.572430138711205,
+    "difficulty": 7.256846333644144
+   },
+   {
+    "at": 1769344560000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769345160000,
+    "stability": 1.8546087666447229,
+    "difficulty": 8.124447224913844
+   },
+   {
+    "at": 1769345580000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1769346480000,
+    "stability": 1.557577175517829,
+    "difficulty": 8.40484720935493
+   },
+   {
+    "at": 1769346480000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1769519280000,
+    "stability": 2.1927123124262025,
+    "difficulty": 8.381017619503005
+   }
+  ],
+  [
+   {
+    "at": 1767606780000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607380000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767607800000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1768212600000,
+    "stability": 7.487502277394533,
+    "difficulty": 4.510985606964673
+   },
+   {
+    "at": 1767936540000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1770701340000,
+    "stability": 32.03121768624432,
+    "difficulty": 3.618480858357223
+   },
+   {
+    "at": 1770734760000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1770735360000,
+    "stability": 3.836467122931286,
+    "difficulty": 5.678157560365358
+   },
+   {
+    "at": 1770736560000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1771168560000,
+    "stability": 5.400867981949616,
+    "difficulty": 5.6668707428987855
+   },
+   {
+    "at": 1771191480000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1774474680000,
+    "stability": 38.47270703636394,
+    "difficulty": 4.955747767234549
+   },
+   {
+    "at": 1774501260000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1784264460000,
+    "stability": 113.3975433312975,
+    "difficulty": 4.947784034816379
+   },
+   {
+    "at": 1784299380000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1844692980000,
+    "stability": 699.2546456103562,
+    "difficulty": 4.123821800339042
+   },
+   {
+    "at": 1814527380000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1925292180000,
+    "stability": 1282.2536107731519,
+    "difficulty": 4.11968492736859
+   }
+  ],
+  [
+   {
+    "at": 1767606840000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607440000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767607440000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607500000,
+    "stability": 1.589763507266002,
+    "difficulty": 6.796932579932991
+   },
+   {
+    "at": 1767607470000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608070000,
+    "stability": 2.2380233037692734,
+    "difficulty": 6.780499397376408
+   }
+  ],
+  [
+   {
+    "at": 1767606900000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607230000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767607461000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767608061000,
+    "stability": 1.6665899525670382,
+    "difficulty": 6.473291771547592
+   },
+   {
+    "at": 1767609261000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767954861000,
+    "stability": 3.9327437961955707,
+    "difficulty": 5.888712577239973
+   }
+  ],
+  [
+   {
+    "at": 1767606960000,
+    "rating": 2,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607290000,
+    "stability": 1.18385,
+    "difficulty": 6.488305268471453
+   },
+   {
+    "at": 1767607125000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607185000,
+    "stability": 0.5931426183664849,
+    "difficulty": 7.607711323234045
+   },
+   {
+    "at": 1767607185000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607785000,
+    "stability": 0.8350091043703922,
+    "difficulty": 7.587548558458277
+   },
+   {
+    "at": 1767608985000,
+    "rating": 4,
+    "state": "review",
+    "step": 0,
+    "due": 1767781785000,
+    "stability": 1.9704168202390422,
+    "difficulty": 7.177818806574312
+   },
+   {
+    "at": 1767701325000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768046925000,
+    "stability": 3.8384402099977213,
+    "difficulty": 7.1596335473751775
+   },
+   {
+    "at": 1767881745000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1768486545000,
+    "stability": 7.30039206053512,
+    "difficulty": 7.14153194036836
+   },
+   {
+    "at": 1769719905000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1772657505000,
+    "stability": 34.48136505104376,
+    "difficulty": 7.123513600753774
+   },
+   {
+    "at": 1774725105000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1783624305000,
+    "stability": 102.95918740875939,
+    "difficulty": 7.105578145501415
+   },
+   {
+    "at": 1783632705000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1794864705000,
+    "stability": 129.8631544153198,
+    "difficulty": 7.555232905943074
+   },
+   {
+    "at": 1794896685000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1817015085000,
+    "stability": 256.05803505575085,
+    "difficulty": 7.535311541886844
+   },
+   {
+    "at": 1805988585000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1838561385000,
+    "stability": 377.4917491132516,
+    "difficulty": 7.5154818161052726
+   },
+   {
+    "at": 1838589045000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1899414645000,
+    "stability": 703.5429510263879,
+    "difficulty": 7.4957433070622965
+   },
+   {
+    "at": 1942017645000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2080862445000,
+    "stability": 1606.9212172867774,
+    "difficulty": 7.476095595160918
+   },
+   {
+    "at": 2358581265000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2753688465000,
+    "stability": 4573.3504161012,
+    "difficulty": 7.456538262734286
+   }
+  ],
+  [
+   {
+    "at": 1767607020000,
+    "rating": 1,
+    "state": "learning",
+    "step": 0,
+    "due": 1767607080000,
+    "stability": 0.40255,
+    "difficulty": 7.1949
+   },
+   {
+    "at": 1767607080000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607680000,
+    "stability": 0.5666983024925972,
+    "difficulty": 7.176636167311107
+   },
+   {
+    "at": 1767608880000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767695280000,
+    "stability": 0.7977815576897062,
+    "difficulty": 7.158456348252584
+   }
+  ],
+  [
+   {
+    "at": 1767607080000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607680000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767608100000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767953700000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1768197420000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1768888620000,
+    "stability": 7.705664668111444,
+    "difficulty": 6.0270563403407795
+   },
+   {
+    "at": 1770296520000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1774357320000,
+    "stability": 46.73556191214516,
+    "difficulty": 6.01416458848632
+   },
+   {
+    "at": 1772339460000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1779683460000,
+    "stability": 85.22541969677793,
+    "difficulty": 6.001332138690391
+   },
+   {
+    "at": 1779701220000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1779701820000,
+    "stability": 5.4754862826544715,
+    "difficulty": 7.280290303441554
+   },
+   {
+    "at": 1779701520000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1779702120000,
+    "stability": 2.7433748114401686,
+    "difficulty": 8.140210001193726
+   },
+   {
+    "at": 1779702120000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1780047720000,
+    "stability": 3.8620440907814992,
+    "difficulty": 8.117597742499342
+   },
+   {
+    "at": 1780773720000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1782156120000,
+    "stability": 16.15121073264633,
+    "difficulty": 8.095089500194952
+   },
+   {
+    "at": 1781476860000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1783636860000,
+    "stability": 25.001505876791292,
+    "difficulty": 8.072684795805163
+   },
+   {
+    "at": 1787970480000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 1787971080000,
+    "stability": 4.255466268153093,
+    "difficulty": 8.672983981729963
+   },
+   {
+    "at": 1787971500000,
+    "rating": 2,
+    "state": "relearning",
+    "step": 0,
+    "due": 1787972400000,
+    "stability": 3.5739166392773885,
+    "difficulty": 8.862260908479934
+   },
+   {
+    "at": 1787972400000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1788404400000,
+    "stability": 5.03125696864624,
+    "difficulty": 8.836327215612034
+   }
+  ],
+  [
+   {
+    "at": 1767607140000,
+    "rating": 3,
+    "state": "learning",
+    "step": 1,
+    "due": 1767607740000,
+    "stability": 3.173,
+    "difficulty": 5.282434422319005
+   },
+   {
+    "at": 1767607440000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1767953040000,
+    "stability": 4.466858064362218,
+    "difficulty": 5.272967931287446
+   },
+   {
+    "at": 1768666080000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1769530080000,
+    "stability": 10.214220662627234,
+    "difficulty": 6.0270563403407795
+   },
+   {
+    "at": 1769125500000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1770853500000,
+    "stability": 20.221396116305556,
+    "difficulty": 6.01416458848632
+   },
+   {
+    "at": 1774329300000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1783660500000,
+    "stability": 108.45015901118812,
+    "difficulty": 6.001332138690391
+   },
+   {
+    "at": 1790210940000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 1820882940000,
+    "stability": 354.9647527578934,
+    "difficulty": 5.988558718163524
+   },
+   {
+    "at": 1882231560000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 1935194760000,
+    "stability": 613.2521585206337,
+    "difficulty": 6.623773013959214
+   },
+   {
+    "at": 1972290480000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 2045212080000,
+    "stability": 844.4047235565497,
+    "difficulty": 7.153465358485894
+   },
+   {
+    "at": 2008761720000,
+    "rating": 2,
+    "state": "review",
+    "step": 0,
+    "due": 2089459320000,
+    "stability": 933.6598624841271,
+    "difficulty": 7.595165083613639
+   },
+   {
+    "at": 2089483560000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2231352360000,
+    "stability": 1642.0828355312792,
+    "difficulty": 7.575060031540125
+   },
+   {
+    "at": 2231366940000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2474410140000,
+    "stability": 2813.375309284906,
+    "difficulty": 7.555047462706148
+   },
+   {
+    "at": 2644545600000,
+    "rating": 1,
+    "state": "relearning",
+    "step": 0,
+    "due": 2644546200000,
+    "stability": 20.944145530802768,
+    "difficulty": 8.32494559291343
+   },
+   {
+    "at": 2644546200000,
+    "rating": 3,
+    "state": "review",
+    "step": 0,
+    "due": 2647051800000,
+    "stability": 29.484565195538057,
+    "difficulty": 8.301483550497135
+   }
+  ]
+ ]
+}

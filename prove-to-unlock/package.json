@@ -1,0 +1,26 @@
+{
+  "name": "prove-to-unlock",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Prove with X you can do Y before unlocking Z.",
+  "workspaces": [
+    "packages/core",
+    "packages/ui",
+    "apps/desktop",
+    "apps/extension"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p packages/core && tsc -p packages/ui && tsc -p apps/desktop && tsc -p apps/extension",
+    "vectors": "tsx scripts/gen-vectors.ts",
+    "build:extension": "npm -w apps/extension run build",
+    "build:desktop": "npm -w apps/desktop run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "type": "module"
+}

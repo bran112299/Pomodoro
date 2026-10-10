@@ -1,0 +1,12 @@
+node_modules/
+dist/
+out/
+release/
+*.log
+.DS_Store
+__pycache__/
+prove-to-unlock/apps/ios/*.xcodeproj
+prove-to-unlock/apps/ios/build/
+prove-to-unlock/apps/ios/ProveCore/.build/
+prove-to-unlock/apps/desktop/assets/models/
+.venv/
