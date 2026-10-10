@@ -57,9 +57,12 @@ function commitment(id: string, title: string, requirements: Commitment["require
 
 beforeAll(async () => {
   dataDir = mkdtempSync(path.join(os.tmpdir(), "ptu-e2e-"));
+  // PTU_E2E_EXECUTABLE runs the same tests against a packaged build (e.g. release/linux-unpacked).
+  const packaged = process.env.PTU_E2E_EXECUTABLE;
+  const flags = ["--no-sandbox", "--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"];
   app = await electron.launch({
-    executablePath: require("electron") as unknown as string,
-    args: [path.join(here, "..", "dist", "main", "main.cjs"), "--no-sandbox", "--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"],
+    executablePath: packaged ?? (require("electron") as unknown as string),
+    args: packaged ? flags : [path.join(here, "..", "dist", "main", "main.cjs"), ...flags],
     env: { ...process.env, PTU_USER_DATA: dataDir, ELECTRON_ENABLE_LOGGING: "1" },
   });
   dash = await app.firstWindow();

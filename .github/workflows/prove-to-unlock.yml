@@ -1,0 +1,117 @@
+name: prove-to-unlock
+
+on:
+  push:
+    branches: [claude/repo-creation-access-h4zmka, main, master]
+    paths: ["prove-to-unlock/**", ".github/workflows/prove-to-unlock.yml"]
+  pull_request:
+    paths: ["prove-to-unlock/**", ".github/workflows/prove-to-unlock.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ptu-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: prove-to-unlock
+
+env:
+  # Unsigned builds: no Apple/Windows code-signing certificates in CI.
+  CSC_IDENTITY_AUTO_DISCOVERY: "false"
+
+jobs:
+  test:
+    name: Test (unit + end-to-end)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: prove-to-unlock/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Install Chromium for the extension e2e test
+        run: npx playwright install --with-deps chromium
+      - run: npm -w apps/desktop run fetch-model
+      - run: npm run build:desktop && npm run build:extension
+      - name: End-to-end (desktop app + extension, real Electron and Chromium)
+        run: xvfb-run -a -s "-screen 0 1440x900x24" npx vitest run --config vitest.e2e.config.ts
+      - name: Lint the Firefox build
+        run: npx --yes web-ext@8 lint --source-dir apps/extension/dist/firefox
+      - uses: actions/upload-artifact@v4
+        with:
+          name: browser-extension
+          path: prove-to-unlock/apps/extension/dist/*.zip
+          if-no-files-found: error
+
+  desktop:
+    name: Desktop (${{ matrix.name }})
+    needs: test
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: macos-latest, name: macOS, flags: --mac }
+          - { os: windows-latest, name: Windows, flags: --win }
+          - { os: ubuntu-latest, name: Linux, flags: --linux }
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: prove-to-unlock/package-lock.json
+      - run: npm ci
+      - run: npm -w apps/desktop run fetch-model
+      - run: npm run build:desktop
+      - name: Package
+        working-directory: prove-to-unlock/apps/desktop
+        run: npx electron-builder ${{ matrix.flags }} --publish never
+      - name: End-to-end against the packaged Linux app
+        if: matrix.name == 'Linux'
+        run: |
+          npx playwright install --with-deps chromium
+          PTU_E2E_EXECUTABLE="$PWD/apps/desktop/release/linux-unpacked/prove-to-unlock" xvfb-run -a -s "-screen 0 1440x900x24" npx vitest run --config vitest.e2e.config.ts apps/desktop
+      - uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ matrix.name }}
+          path: |
+            prove-to-unlock/apps/desktop/release/*.dmg
+            prove-to-unlock/apps/desktop/release/*.zip
+            prove-to-unlock/apps/desktop/release/*.exe
+            prove-to-unlock/apps/desktop/release/*.AppImage
+          if-no-files-found: error
+
+  release:
+    name: Publish "latest build" pre-release
+    needs: [test, desktop]
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Replace the pre-release
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          ls -la artifacts
+          gh release delete ptu-latest --cleanup-tag --yes || true
+          gh release create ptu-latest artifacts/* \
+            --target "$GITHUB_SHA" \
+            --prerelease \
+            --title "Prove to Unlock: latest build" \
+            --notes "Automatic build of ${GITHUB_SHA::7} from ${GITHUB_REF_NAME}. Unsigned: on macOS right-click the app and choose Open; on Windows choose More info, then Run anyway. See prove-to-unlock/README.md."

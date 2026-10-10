@@ -12,19 +12,17 @@
     "start": "npm run build && electron .",
     "dist": "npm run fetch-model && npm run build && electron-builder --publish never"
   },
-  "dependencies": {
+  "devDependencies": {
     "@ptu/core": "*",
     "@ptu/ui": "*",
+    "@types/qrcode": "^1.5.5",
     "bonjour-service": "^1.3.0",
+    "electron": "33.4.11",
+    "electron-builder": "^25.1.8",
+    "esbuild": "^0.24.2",
     "preact": "^10.25.4",
     "qrcode": "^1.5.4",
     "sql.js": "^1.12.0"
-  },
-  "devDependencies": {
-    "@types/qrcode": "^1.5.5",
-    "electron": "^33.3.1",
-    "electron-builder": "^25.1.8",
-    "esbuild": "^0.24.2"
   },
   "build": {
     "appId": "com.provetounlock.desktop",
@@ -41,28 +39,52 @@
       {
         "from": "assets/models",
         "to": "models",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
     ],
     "asar": true,
     "mac": {
       "category": "public.app-category.productivity",
       "target": [
-        { "target": "dmg", "arch": ["universal"] },
-        { "target": "zip", "arch": ["universal"] }
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "universal"
+          ]
+        }
       ],
       "identity": null,
       "hardenedRuntime": false,
       "extendInfo": {
         "NSCameraUsageDescription": "Take a live photo as proof that you did your task.",
         "NSLocalNetworkUsageDescription": "Link with your phone and other computers on your Wi-Fi.",
-        "NSBonjourServices": ["_provetounlock._tcp"]
+        "NSBonjourServices": [
+          "_provetounlock._tcp"
+        ]
       }
     },
     "win": {
       "target": [
-        { "target": "nsis", "arch": ["x64"] },
-        { "target": "portable", "arch": ["x64"] }
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
       ]
     },
     "nsis": {
@@ -71,11 +93,24 @@
       "allowToChangeInstallationDirectory": true
     },
     "portable": {
-      "artifactName": "${productName}-${version}-portable.${ext}"
+      "artifactName": "Prove-to-Unlock-${version}-portable.${ext}"
     },
     "linux": {
-      "target": ["AppImage"],
-      "category": "Utility"
-    }
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility",
+      "executableName": "prove-to-unlock"
+    },
+    "npmRebuild": false,
+    "electronVersion": "33.4.11",
+    "publish": null,
+    "executableName": "prove-to-unlock",
+    "artifactName": "Prove-to-Unlock-${version}-${os}-${arch}.${ext}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bran112299/Pomodoro.git",
+    "directory": "prove-to-unlock/apps/desktop"
   }
 }
