@@ -53,9 +53,15 @@ public enum LinkProtocol {
 
     public static func decodePairingQR(_ s: String) -> PairingQR? {
         let t = s.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard t.hasPrefix("ptu://pair?"), let comps = URLComponents(string: t) else { return nil }
+        guard t.hasPrefix("ptu://pair?") else { return nil }
+        // The computer builds this with URLSearchParams (application/x-www-form-urlencoded:
+        // spaces become "+"), which URLComponents doesn't decode, so parse it by hand.
         var q: [String: String] = [:]
-        for item in comps.queryItems ?? [] { q[item.name] = item.value ?? "" }
+        for pair in t.dropFirst("ptu://pair?".count).split(separator: "&") {
+            let kv = pair.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false)
+            let decode = { (s: Substring) in String(s).replacingOccurrences(of: "+", with: " ").removingPercentEncoding ?? String(s) }
+            q[decode(kv[0])] = kv.count > 1 ? decode(kv[1]) : ""
+        }
         let hosts = (q["h"] ?? "").split(separator: ",").map(String.init).filter { !$0.isEmpty }
         guard let port = Int(q["p"] ?? ""), port > 0, port < 65536, !hosts.isEmpty else { return nil }
         let id = q["id"] ?? ""
